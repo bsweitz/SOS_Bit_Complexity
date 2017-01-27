@@ -1,0 +1,82 @@
+\documentclass[11pt,letterpaper]{article}
+
+% options for preamble
+
+\def\showauthornotes{0}
+\def\showtableofcontents{0}
+\def\showkeys{0}
+\def\showdraftbox{0}
+\def\showcolorlinks{1}
+\def\usemicrotype{1}
+\def\showfixme{0}
+\def\showdefine{0}
+
+\input{preamble/macros}
+%\input{preamble/macros-adv}
+
+\setcounter{page}{1}
+
+\title{On the Bit Complexity of Sum-of-Squares Proofs}
+
+\author{%
+\normalsize
+Ben Weitz\thanks{UC Berkeley, \protect\email{bsweitz@cs.berkeley.edu}. Supported by an NSF Graduate Research Fellowship (NSF award no DGE 1106400).}
+}
+
+%\date{}
+
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+\maketitle
+
+\draftbox
+
+\thispagestyle{empty}
+
+FILES/ASBTRACT
+\clearpage
+
+% tableofcontents added for better navigability of the document
+\ifnum\showtableofcontents=1
+{
+\tableofcontents
+\thispagestyle{empty}
+ }
+\fi
+
+\clearpage
+
+\setcounter{page}{1}
+
+\input{files/intro}
+
+\input{files/prelims}
+
+\input{files/main}
+
+\input{files/balance}
+
+\section*{Acknowledgements}
+We would like to thank Prasad Raghavendra, Satish Rao, and Ben Recht for helpful discussions, and Moritz Hardt and Samuel B. Hopkins for helpful questions.
+We also thank several anonymous reviewers for very helpful comments.
+
+\addreferencesection
+%\bibliographystyle{amsalpha}
+%\bibliography{writeup.bib}
+
+\appendix
+
+
+
+FILES/NOISE-NNM
+FILES/ERRORS-APPENDIX
+FILES/WHITENING-APP
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

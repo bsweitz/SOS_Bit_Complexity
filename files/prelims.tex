@@ -1,0 +1,21 @@
+\section{Preliminaries}
+\label{sec:prelims}
+For a set of real polynomials $\cP = \{p_1, p_2, \dots, p_m\}$, we denote their generated ideal in $\R[x]$ by $\langle \cP\rangle$ or $\langle p_1, \dots, p_m\rangle$. For an ideal $I$ of $\R[x]$, its real variety is defined 
+\[\cV_\R(I) \coloneqq \{x \in \R | \forall p \in I: p(x) = 0\}.\]
+For a set $S \subseteq \R$, its vanishing ideal is defined
+\[\cI(S) = \{p \in \R[x] | \forall x \in S: p(x) = 0\}.\]
+We call $\cP$ \emph{real complete} if $\cI(\cV_\R(\cP)) = \langle \cP\rangle$. For any polynomial $p \in \langle \cP\rangle$, we say $p$ has a degree $d$ derivation from $\cP$ if there exist there exist real $\lambda_1(x),\dots,\lambda_m(x)$ such that $p(x) = \sum_i \lambda_i(x)p_i(x)$ and $\max_i \deg \lambda_ip_i \leq d$. We often refer to the $\lambda_i$ as the derivation of $p$. Finally, if we call $\cP$ \emph{$k(d)$-effective} if $\cP$ is real complete and any polynomial $p \in \langle \cP\rangle$ of degree $d$ has a derivation from $\cP$ of degree $k(d)$. 
+\begin{lemma}
+If $\cP$ is real complete with finite real variety $S$, then $\R[x]/\langle \cP\rangle$ is an $\R$-vector space of dimension $|S|$ with inner product $\iprod{\overline{p}, \overline{q}}= \sum_{\alpha \in S} p(\alpha)q(\alpha)$ for any $p \in \overline{p}$, $q \in \overline{q}$.
+\end{lemma}
+\begin{proof}
+Let $I = \langle \cP\rangle$. Clearly $\R[x]/I$ is an $\R$-vector space, but furthermore it is easy to show that $\R[x]/I \equiv \R^S$. Consider the evaluation map $E: \R[x]/I \rightarrow \R^S$ given by $E(\overline{p}) = (\alpha \rightarrow p(\alpha))$. First, we show that this map is well-defined. If $p,q \in \overline{p}$, then $p-q \in I$. Because $S$ is the real variety of $\cP$, $(p-q)(\alpha) = 0$ for any $\alpha \in S$, and thus $p(\alpha) = q(\alpha)$. Next, $E$ is clearly linear, and if you take a high enough degree polynomial it is clear that $E$ is onto. Now if $E(\overline{p}) = 0$, then $\forall \alpha \in S: p(\alpha) = 0$. Because $\cP$ is real complete, $p \in I$, and so $\overline{p} = \overline{0}$. The claimed inner product is simply the Euclidean inner product of $\R^S$ composed with the evaluation map $E$. 
+\end{proof}
+
+\subsection{Sum of Squares Proofs}
+\begin{definition}
+Let $S \subseteq \R^n$ be finite, $\cP$ be a generating set for $\cI(S)$, and let $r(x)$ be a polynomial such that $r(\alpha) \geq 0$ for each $\alpha \in S$. We say that $r(x)$ has a \emph{Sum-of-Squares proof of nonnegativity from $\cP$} if there is a polynomial identity of the form
+\[r(x) = \sum_i^m h_i^2(x) + \sum_{p \in \cP} \lambda_p(x) p(x).\]
+We say the proof has degree $d$ if $\max \{\deg h_i^2, \deg \lambda_p p\} = d$. We will sometimes refer to the collection $\Pi_\cP = \{h_i, \lambda_p | i \in [m], p \in \cP\}$ as the proof. 
+\end{definition}
+We will be concerned with not just the degree of these proofs, but also their bit complexity. To this end, we define the following norms on polynomials and proofs: For $p(x) \in \R[x]$, we write $\|p\|$ for the absolute value of the maximum coefficient of $p$ in the standard monomial basis, and for any collection of polynomials $\cP$, we write $\|\cP\| = \max_{p \in \cP} \|p\|$. 
