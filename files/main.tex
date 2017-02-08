@@ -1,43 +1,65 @@
-\section{Effective Nullstellensatz Yields Low Bit Complexity}
+\section{Effective Nullstellensatz and Nondegenerate Inequalities}
 \label{sec:main}
 
 In this section we prove our main theorem:
 
 \begin{theorem}\label{thm:main}
-Let $\cP = \{p_1,\dots,p_m\}$ be a real complete, $(k(d),B)$-effective set of polynomials with $S = \cV_\R(\cP)$. Let $r(x)$ be a polynomial nonnegative on $S$, and assume $r$ has a degree $d$ sum-of-squares proof of nonnegativity $r(x) = \sum_{i=1}^t q_i^2 + \sum_{i=1}^m \lambda_i p_i$. Then $r$ has a degree $k(d)$ sum-of-squares proof of nonnegativity such that the coefficients of every polynomial appearing in the proof are bounded by $O(\exp(\|\cP\| + \|r\|))$.
+Let $\cP = \{p_1,\dots,p_m\}$ be a real complete, $k(d)$-effective set of polynomials with $S = \cV_\R(\cP)$. Let $\cQ = \{q_1, \dots, q_\ell\}$ be a set of polynomials such that $\forall q \in \cQ, \alpha \in S: |q(\alpha)| \geq \epsilon$. Define $S_{\cQ} = \{\alpha \in S | \forall q \in \cQ: q(\alpha) \geq 0\}$. Assume there is no polynomial that is zero on $S_{\cQ}$ and not in $\langle \cP\rangle$. 
+
+Let $r(x)$ be a polynomial nonnegative on $S_{\cQ}$, and assume $r$ has a degree $d$ sum-of-squares proof of nonnegativity 
+\[r(x) = \sum_{i=1}^{t_0} h_i^2 + \sum_{i=1}^\ell \left(\sum_{j=1}^{t_i} s_j^2\right) q_i + \sum_{i=1}^m \lambda_i p_i.\] 
+Then $r$ has a degree $k(d)$ sum-of-squares proof of nonnegativity such that the coefficients of every polynomial appearing in the proof are bounded by TODO.
 \end{theorem}
 \begin{proof}
-Our strategy is to simplify the SOS part of the given SOS-proof and move all of the potentially huge coefficients into the latter term which lies in the ideal $I = \langle \cP\rangle$. Next, we use the fact that $\cP$ is effective to argue that you don't need to use huge coefficients to express the leftover polynomial. To that end, we want to reduce each $q_i$ to a canonical form. Recall that since $\cP$ is real complete, $V = \R[x]/I$ is a real vector space with inner product $\iprod{p, q} = \sum_{\alpha \in S} p(\alpha)q(\alpha)$. Let $V_d = (\R[x]/I)_d$ denote the subspace of $V$ where each equivalence class contains a representative of degree at most $d$. Clearly the standard monomial basis is a spanning set for $V_d$, so it contains some basis for $V_d$. Take this basis and the defined inner product and use the Gram-Schmidt process to produce an orthonormal basis $\{v_1,\dots,v_s\}$ for $V_d$. We need to bound $\|v_i(x)\|$: Note that each $\alpha \in S$ satisfies $\|\alpha\| = \poly(\|\cP\|)$, and so at each step in the Gram-Schmidt process, the inner product between two polynomials $p$ and $q$ is at most $\poly(\|\cP\|,\|p\|,\|q\|,n^d)$, and since there are at most $n^d$ steps, it produces polynomials satisfying $\|v_i(x)\| \leq \poly(\|cP\|,n^d)$ for each $i$. Define a vector of polynomials $v = [v_1,\dots,v_s]$, and note there must exist vectors of reals $c_1,\dots,c_t$ such that $\forall \alpha \in S: c_i^Tv(\alpha) = q_i(\alpha)$, and thus $q_i^2(x) - (c_i^Tv(x))^2 \in I$. Thus we can write $r$ in the following way:
+The first thing we will do is use the conditions on $\cP$ to simplify the given SOS proof and transform the SOS parts into a canonical form. During this process, we will generate "leftover" polynomials that are zero on all of $S$. These polynomials will get absorbed into the final term which is an element of $\langle \cP\rangle$. Next, we use the non-degeneracy of $\cQ$ to argue that these canonical SOS polynomials must have small coefficients. Finally, we argue that because $\langle \cP\rangle$ is effective, the final term can be taken to have small coefficients.
+
+A priori, it is possible that the SOS part of the proof contains huge coefficients that get canceled out later by huge coefficients in the last term. The canonical form we are aiming for is one where each square is "reduced" modulo $\cP$. Recall that since $\cP$ is real complete, $V = \R[x]/I$ is a real vector space with inner product $\iprod{p, q} = \sum_{\alpha \in S} p(\alpha)q(\alpha)$. Let $V_d = (\R[x]/I)_d$ denote the subspace of $V$ where each equivalence class contains a representative of degree at most $d$. Clearly the standard monomial basis is a spanning set for $V_d$, so it contains some basis for $V_d$, call it $\{v_1,\dots,v_s\}$ and let $v$ denote the vector of these polynomials. 
+%Take this basis and the defined inner product and use the Gram-Schmidt process to produce an orthonormal basis $\{v_1,\dots,v_s\}$ for $V_d$. We need to bound $\|v_i(x)\|$: Note that each $\alpha \in S$ satisfies $\|\alpha\| = \poly(\|\cP\|)$, and so at each step in the Gram-Schmidt process, the inner product between two polynomials $p$ and $q$ is at most $\poly(\|\cP\|,\|p\|,\|q\|,n^d)$, and since there are at most $n^d$ steps, it produces polynomials satisfying $\|v_i(x)\| \leq \poly(\|\cP\|,n^d)$ for each $i$. Define a vector of polynomials $v = [v_1,\dots,v_s]$. 
+Because these polynomials are a basis, for any polynomial $h^2$, there must exist a vector of reals $c$ such that $\forall \alpha \in S: c^Tv(\alpha)^2 = h^2(\alpha)$, and we can further rewrite $h^2(\alpha) = cc^T \cdot v(\alpha)v(\alpha)^T$ for each $\alpha$. Thus $h^2(x) - (c^Tv(x))^2 \in \langle \cP\rangle$, and because $\langle \cP\rangle$ is $k(d)$ effective, this polynomial has some degree $k(d)$ derivation from $\cP$, and we can absorb it into the $\lambda_i$ appropriately. Thus we can write $r$ in the following way:
 
 \begin{align*}
-r(x) &= \sum_{i=1}^t (c_i^Tv(x))^2 + \sum_{i=1}^t \left(q_i^2(x) - (c_i^Tv(x))^2\right) + \sum_{i=1}^m \lambda_ip_i \\
-&= \sum_{i=1}^t c_ic_i^T \cdot v(x)v(x)^T + \sum_{i=1}^t \left(q_i^2(x) - (c_i^Tv(x))^2\right) + \sum_{i=1}^m \lambda_ip_i \\
-&= (C \cdot v(x)v(x)^T) + \sum_{i=1}^t \left(q_i^2(x) - (c_i^Tv(x))^2\right) + \sum_{i=1}^m \lambda_ip_i
+r(x) &= (C \cdot v(x)v(x)^T) + \sum_{i=1}^\ell (D_i \cdot v(x)v(x)^T)q_i + \sum_{i=1}^m \lambda_i'p_i 
+%&= \sum_{i=1}^t c_ic_i^T \cdot v(x)v(x)^T + \sum_{i=1}^t \left(q_i^2(x) - (c_i^Tv(x))^2\right) + \sum_{i=1}^m \lambda_ip_i \\
+%&= (C \cdot v(x)v(x)^T) + \sum_{i=1}^t \left(q_i^2(x) - (c_i^Tv(x))^2\right) + \sum_{i=1}^m \lambda_ip_i
+%&= (C \cdot v(x)v(x)^T) + \sum_{i=1}^m \lambda_i'p_i,
 \end{align*}
 
-Now if we take this polynomial identity and average it over every $\alpha \in S$, we get
+Now that we have a canonical form for our degree-$k(d)$ proof, we want to prove that $C$ and each $D_i$ have small entries. If we take this polynomial identity and average it over every $\alpha \in S_{\cQ}$, we get
 \begin{align*}
-E_\alpha[r(\alpha)] &= (C \cdot E_\alpha[v(\alpha)v(\alpha)^T]) + 0 + 0\\
-&= C \cdot Id \\
-&= Tr(C)
+E_\alpha[r(\alpha)] &= (C \cdot E_{\alpha \in S_{\cQ}}[v(\alpha)v(\alpha)^T]) + \sum_{i=1}^\ell (D_i \cdot E_{\alpha \in S_{\cQ}}[v(\alpha)v(\alpha)^Tq_i(\alpha)]) + 0\\
+&\geq (C \cdot E_{\alpha \in S_{\cQ}}[v(\alpha)v(\alpha)^T]) + \sum_{i=1}^\ell \epsilon(D_i \cdot E_{\alpha \in S_{\cQ}}[v(\alpha)v(\alpha)^T])
 \end{align*}
-where we used the fact that $\{v_1,\dots,v_s\}$ are orthonormal. Clearly $E_\alpha[r(\alpha)] = \poly(\|r\|)$, and since $C$ is PSD, this implies $\|C\|_F = \poly(\|r\|)$, and thus $\|v(x)^TCv(x)\| = \poly(\|r\|,\|\cP\|,n^d)$. Now because $\cP$ is complete, $r(x) - (C \cdot v(x)v(x)^T) \in \langle \cP\rangle$. Because $\langle \cP\rangle$ is $(k(d), B)$-effective, there is a degree $k(d)$ polynomial identity
-\[r(x) - (C \cdot v(x)v(x)^T) = s(x) + \sum_i \lambda'_i(x)p_i(x)\]
-where $s(x)$ is a sum-of-squares polynomial with coefficients bounded by $B$. If we let the coefficients of polynomials $\sigma_i$ be variables, it's clear that the system of equations induced by the polynomial identity 
-\[r(x) - (C\cdot v(x)v(x)^T) - s(x) = \sum_i \sigma_i(x)p_i(x)\]
-is feasible, but note that this system is \emph{linear} in the coefficients of $\sigma_i$, there are at most $O(n^{k(d)})$ equations, and the entries are at most $\poly(\|r\|,\|\cP\|,n^d, B)$. By Cramer's rule, we can pick a solution $\sigma_i^*$ with $\|\sigma_i^*\| \leq \exp(\poly(\|r\|,\|\cP\|,n^d, B))$. Thus we can replace the $\lambda_i'$ with $\sigma_i^*$ and achieve an SOS-proof of bounded bit complexity. 
-\end{proof}
-We obtain an immediate corollary:
-\begin{corollary}\label{cor:grobner}
-If $\cP$ is complete and a Grobner basis for $\langle \cP\rangle$, then any degree $d$ SOS proof from $\cP$ can be taken to have polynomial bit complexity. 
-\end{corollary}
-\begin{proof}
-Every Grobner basis is $d$-effective, so just apply \prettyref{thm:main}.
+The LHS is clearly $\poly(\|r\|)$, and the RHS is a sum of positive numbers, but it remains to relate the RHS to the entries of $C$ and $D_i$. First, we note that $E = E_{\alpha \in S_{\cQ}}[v(\alpha)v(\alpha)^T]$ is full rank by the assumptions of the theorem. This is because any zero eigenvector $c$ yields the degree $d$ polynomial $c^Tv$ which is zero on $S_{\cQ}$, and since $c$ is nonzero and the coordinates of $v$ form a basis $c^Tv \notin \langle \cP\rangle$. Now $E$ is full rank and $|S_{\cQ}|E$ is an integer matrix. Its determinant must be at least one, and its largest eigenvalue can be at most $O(n^d|S_{\cQ}|)$, and so the least eigenvalue of $E$ is at least $\Omega((n^d|S_{\cQ}|)^{-n^d-1}) \geq \Omega(\poly(1/{2^{n^d}}))$. Combining this with the above equation, we get that $Tr(C) \leq O(\poly(\|r\|,2^{n^d}))$ and $Tr(D_i) \leq O(\poly(\epsilon,\|r\|,2^{n^d}))$ for each $i$. Because each of these matrices is PSD, this bound extends to a similar bound on its entries.
+
+It remains to bound the coefficients of the term contained in $\langle \cP\rangle$. Just by rearranging, we have a degree $k(d)$ polynomial identity
+\[r(x) - (C \cdot v(x)v(x)^T) - \sum_{i=1}^\ell (D_i \cdot v(x)v(x)^T)q_i = \sum_i \lambda'_i(x)p_i(x)\]
+The above implies that the system of equations induced by the polynomial identity 
+\[r(x) - (C \cdot v(x)v(x)^T) - \sum_{i=1}^\ell (D_i \cdot v(x)v(x)^T)q_i = \sum_i \sigma_i(x)p_i(x),\]
+where the variables are the coefficients of the $\sigma_i$, is feasible, but note that this system is \emph{linear} in the variables, there are at most $O(n^{k(d)})$ equations, and the entries are at most $\poly(\epsilon,\|r\|,2^{n^d})$. TODO: DO THE LAST STEP 
+
+
+%By Cramer's rule, we can pick a solution $\sigma_i^*$ with $\|\sigma_i^*\| \leq \exp(\poly(\|r\|,\|\cP\|,n^d))$. Thus we can replace the $\lambda_i'$ with $\sigma_i^*$ and achieve an SOS-proof of bounded bit complexity. 
 \end{proof}
 \begin{remark}
-In CITE ODONNEL, the author gives an example $\cP$ and linear $r(x)$ for which $r$ has a degree two SOS proof, but it must have exponential bit-complexity. We simply note here that the $\cP$ he gives is $(d+2)$-effective but not $d$-effective, so if you're willing to pay a tiny bit in the degree you can take the SOS proofs to have polynomial bit-complexity.
+In CITE ODONNEL, the author gives an example $\cP$ and linear $r(x)$ for which $r$ has a degree two SOS proof, but it must have exponential bit-complexity. We simply note here that the $\cP$ he gives is $(d+2)$-effective but not $d$-effective, so if you're willing to pay a tiny bit in the degree you can take the SOS proofs to have polynomial bit-complexity. We strengthen his counterexample in \prettyref{sec:counterexample} to avoid this phenomenon.
 \end{remark}
-With our main theorem in hand, we move on to using it to prove that many applications of the SOS algorithm remain automatizable. One might worry that Grobner bases are the \emph{only} types of base constraints that are effective, and that this theorem will not be very useful. We dispel this notion in \prettyref{sec:balance} by showing the natural description of the MAX-BISECTION ideal is effective, even though its Grobner basis has exponential size. Before we move on to these though, we strengthen the theorem slightly. Note that we are only allowing ourselves efficient Nullstellensatz-type proofs, even though the SOS proof system is more powerful. As an example, consider the following system: $\cP = \{x_i^2 - 1 | i \in [n]\} \cup \{\sum_i x_i - n\}$. It's clear that the only feasible solutions to this system are $x_i = 1$ for all $i$. However, the polynomial $x_i - 1$ does not have a derivation in degree less than $n$ from these constraints! However, if we allow ourselves to use SOS-proofs, one can write both $x_i - 1$ and $1 - x_i$ as a SOS modulo $\cP$, thereby proving that $x_i - 1 \in I$. This motivates the following (obvious) lemma:
-\begin{lemma}\label{lem:sos-lemma}
-Let $\cP$ and $\cQ$ be such that $\langle \cP\rangle = \langle \cQ\rangle$ and let $\cQ$ be complete and $k(d)$-effective. If every $q \in \cQ$ of degree $d$ can be written $q(x) = \sum_i s_i(x)^2 + \sum_i \lambda_i(x)p_i(x)$ in degree $k'(d)$ with $\|s_i\|, \|\lambda_i\| \leq poly(\|\cP\|)$, then for any SOS proof of $r(x)$ from $\cP$ of degree $d$, there is an SOS proof of $r(x)$ from $\cP$ of degree $k(d) + k'(d)$ with coefficients bounded by $O(\exp(\|\cP\| + \|r\|))$.
-\end{lemma}
+We obtain an immediate corollary from our theorem:
+\begin{corollary}\label{cor:grobner}
+If $\cP$ is real complete and a Grobner basis for $\langle \cP\rangle$, then any degree $d$ SOS proof from $\cP$ can be taken to have polynomial bit complexity. 
+\end{corollary}
+\begin{proof}
+Every Grobner basis is $d$-effective, and the conditions on $\cQ$ are vacuously true, so just apply \prettyref{thm:main}.
+\end{proof}
+\begin{example}
+A few well-known constraints that are real complete and Grobner bases:
+\begin{itemize}
+\item The CLIQUE constraints for a graph $G = (V,E)$, given by $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{x_ix_j | (i,j) \notin E\}$, are both complete and a Grobner basis.
+\item The unit vector constraint $\cP = \{\sum_i x_i^2 - 1\}$.
+\end{itemize}
+\end{example}
+One might worry that Grobner bases are the \emph{only} types of base constraints that are effective, and that this theorem will not be very useful. We dispel this notion in \prettyref{sec:balance} by showing the natural description of the MAX-BISECTION ideal is effective, even though its Grobner basis has exponential size. 
+
+%Before we move on to these though, we strengthen the theorem slightly. Note that we are only allowing ourselves efficient Nullstellensatz-type proofs, even though the SOS proof system is more powerful. As an example, consider the following system: $\cP = \{x_i^2 - 1 | i \in [n]\} \cup \{\sum_i x_i - n\}$. It's clear that the only feasible solutions to this system are $x_i = 1$ for all $i$. However, the polynomial $x_i - 1$ does not have a derivation in degree less than $n$ from these constraints! However, if we allow ourselves to use SOS-proofs, one can write both $x_i - 1$ and $1 - x_i$ as a SOS modulo $\cP$, thereby proving that $x_i - 1 \in I$. This motivates the following (obvious) lemma:
+%\begin{lemma}\label{lem:sos-lemma}
+%Let $\cP$ and $\cQ$ be such that $\langle \cP\rangle = \langle \cQ\rangle$ and let $\cQ$ be complete and $k(d)$-effective. If every $q \in \cQ$ of degree $d$ can be written $q(x) = \sum_i s_i(x)^2 + \sum_i \lambda_i(x)p_i(x)$ in degree $k'(d)$ with $\|s_i\|, \|\lambda_i\| \leq poly(\|\cP\|)$, then for any SOS proof of $r(x)$ from $\cP$ of degree $d$, there is an SOS proof of $r(x)$ from $\cP$ of degree $k(d) + k'(d)$ with coefficients bounded by $O(\exp(\|\cP\| + \|r\|))$.
+%\end{lemma}
