@@ -12,10 +12,27 @@ If $\cP$ is real complete with finite real variety $S$, then $\R[x]/\langle \cP\
 Let $I = \langle \cP\rangle$. Clearly $\R[x]/I$ is an $\R$-vector space, but furthermore it is easy to show that $\R[x]/I \equiv \R^S$. Consider the evaluation map $E: \R[x]/I \rightarrow \R^S$ given by $E(\overline{p}) = (\alpha \rightarrow p(\alpha))$. First, we show that this map is well-defined. If $p,q \in \overline{p}$, then $p-q \in I$. Because $S$ is the real variety of $\cP$, $(p-q)(\alpha) = 0$ for any $\alpha \in S$, and thus $p(\alpha) = q(\alpha)$. Next, $E$ is clearly linear, and if you take a high enough degree polynomial it is clear that $E$ is onto. Now if $E(\overline{p}) = 0$, then $\forall \alpha \in S: p(\alpha) = 0$. Because $\cP$ is real complete, $p \in I$, and so $\overline{p} = \overline{0}$. The claimed inner product is simply the Euclidean inner product of $\R^S$ composed with the evaluation map $E$. 
 \end{proof}
 
-\subsection{Sum of Squares Proofs}
+\subsection{Polynomial Proofs}
+We define a proof of non-negativity as follows:
 \begin{definition}
-Let $S \subseteq \R^n$ be finite, $\cP$ be a generating set for $\cI(S)$, and let $r(x)$ be a polynomial such that $r(\alpha) \geq 0$ for each $\alpha \in S$. We say that $r(x)$ has a \emph{Sum-of-Squares proof of nonnegativity from $\cP$} if there is a polynomial identity of the form
-\[r(x) = \sum_i^m h_i^2(x) + \sum_{p \in \cP} \lambda_p(x) p(x).\]
-We say the proof has degree $d$ if $\max \{\deg h_i^2, \deg \lambda_p p\} = d$. We will sometimes refer to the collection $\Pi_\cP = \{h_i, \lambda_p | i \in [m], p \in \cP\}$ as the proof. 
+Let $\cP = \{p_1,\dots,p_n\}$ and $\cQ = \{q_1,\dots,q_m\}$ be two sets of polynomials, and let $S = \{x \in \R^n | \forall p \in \cP: p(x) = 0, \forall q \in \cQ: q(x) \geq 0\}$. We say that $r(x)$ has a \emph{Sum-of-Squares proof of non-negativity from $\cP$ and $\cQ$} if there is a polynomial identity of the form
+\[r(x) = \sum_{i}^{t_0} h_i^2(x) + \sum_{i}^m \left(\sum_{j}^{t_i} s_j^2(x)\right)q_i(x) + \sum_{i}^n \lambda_i(x) p(x).\]
+We say the proof has degree $d$ if $\max \{\deg h_i^2, \deg s_j^2q_i, \deg \lambda_i p\} = d$.
 \end{definition}
-We will be concerned with not just the degree of these proofs, but also their bit complexity. To this end, we define the following norms on polynomials and proofs: For $p(x) \in \R[x]$, we write $\|p\|$ for the absolute value of the maximum coefficient of $p$ in the standard monomial basis, and for any collection of polynomials $\cP$, we write $\|\cP\| = \max_{p \in \cP} \|p\|$. 
+We will be concerned with not just the degree of these proofs, but also their bit complexity. To this end, we define the following norms on polynomials and proofs: For $p(x) \in \R[x]$, we write $\|p\|$ for the absolute value of the maximum coefficient of $p$ in the standard monomial basis, and for any collection of polynomials $\cP$, we write $\|\cP\| = \max_{p \in \cP} \|p\|$. We say that $r$ has a $\kappa$-nice proof from $\cP$ if the maximum coefficient appearing in any of the polynomials $h_i$, $s_j$, and $\lambda_i$ is at most $\kappa \|r\|$.
+
+\subsection{Nice Solution Spaces}
+In this section we define the conditions we require in order to guarantee that SOS proofs from $(\cP, \cQ)$ have low bit-complexity. Let $S$ denote the semialgebraic set
+\[S \coloneqq \{\alpha \in \R^n | \forall p \in \cP: p(\alpha) = 0, \forall q \in \cQ: q(\alpha) \geq 0\},\]
+$d$ be a positive integer, and let $\cB$ be a basis for $\R[x]_d = \{p \in \R[x] | \deg p \leq d\}$. For simplicity, one can think of $\cB$ as just being the usual monomial basis of $\R[x]_d$. Finally, let ${\bf v}$ be a vector of polynomials whose entries are the elements of $\cB$. We write ${\bf v}(\alpha)$ as the real vector whos entries are the entries of ${\bf v}$ evaluated at $\alpha$. Define
+\[M \coloneqq E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T].\]
+\begin{definition}
+Let everything be as above.
+\begin{itemize}
+\item We say that $(\cP, \cQ, S)$ is \emph{$\delta$-spectrally rich up to degree $d$} (with respect to $\cB$) if every nonzero eigenvalue of $M$ is at least $\delta$.
+\item We say that $(\cP, \cQ, S)$ is $k$-complete up to degree $d$ (with respect to $\cB$) if every zero eigenvector of $M$ (which can be seen as a degree $d$ polynomial in the basis $\cB$) has a degree $k$ derivation from $\cP$. 
+\item We say that $\cQ$ is $\epsilon$-robust if $\forall q \in \cQ, \forall \alpha \in S: q(\alpha) > \epsilon$.
+\end{itemize}
+\end{definition}
+If $(\cP, \cQ, S)$ is all of the above we will say it is $(\delta, k, \epsilon)$-\emph{nice} up to degree $d$. Our main theorem, which will be proven in \prettyref{sec:main}, states that if a set of polynomials is nice, then any SOS proof from them can be taken to have polynomial bit complexity. The question remains what kinds of polynomials have nice solution spaces? We will address this question in \prettyref{sec:nicespaces}, but it turns out that many commonly used polynomial constraints have nice solution spaces, including CLIQUE and MAX-BISECTION.
+
