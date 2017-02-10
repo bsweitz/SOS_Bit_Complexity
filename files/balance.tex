@@ -1,51 +1,27 @@
-\section{CSPs With Balance Constraints}\label{sec:balance}
+\section{MAX-BISECTION Constraints}\label{sec:balance}
 In this section, we prove our earlier claim that the MAX-BISECTION constraints have a nice solution space. Recall the constraints:
-\[\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}.\]
-This is an interesting example because $\cP$ is not a Grobner basis for its ideal $\langle \cP \rangle$. Indeed, the Grobner basis for this ideal has exponential size. This shows that our framework extends beyond just Grobner bases. Recall that to prove $\cP$ is nice, we have to prove that it is spectrally rich, robust, and complete. Since the solution space $S \subset \{0,1\}^n$, it is $\delta$-spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{}, due to the obvious symmetry of the constraints. 
-\begin{theorem}
-Let $c$ be an integer. Then for every $n \geq c$, the set of polynomials
-\[\cP(c,n) = \{x_i^2 - x_i | 1 \leq i \leq n\} \cup \{\sum_{i=1}^n x_i - c\}\]
-is $(2d, \poly(n^d))$-effective.
-\end{theorem}
-%First, we note the theorem is true for $c = \pm n$. If $c = n$, then the polynomials $\{x_i - 1 | i \in [n]\}$ form a Grobner basis for $I_c$. For each $j$, write 
-%\[x_j - 1 = \sum_{i\neq j}\frac{1}{2}(1-x_i)^2 + \sum_i x_i - n + \sum_{i\neq j} x_i^2 - 1,\]
-%and by \prettyref{lem:sos-lemma}, \label{thm:balance} is true for $I_n$, similarly for $I_{-n}$.
-We will consider only $0 \leq c \leq n/2$. The proof for $n/2 \leq c \leq n$ is symmetric. To prove this theorem, we treat polynomials of degree at most $c$ and polynomials of degree greater than $c$ differently. This is because proofs ignoring the SOS part will suffice for polynomials of small degree, but do not for polynomials of degree $c$. This is because if $S \subseteq [n]$ with $|S| > c$, then $\prod_{i \in S} x_i = 0$ by the pigeonhole principle (since in a group of $c+1$ variables, at least one of them must be $0$), but this is known to be hard to prove without SOS \cite{}. So we prove the following two lemmas:
-\begin{lemma}\label{lem:lowdeg}
-Let $r(x) \in \cI(\cV_\R(\cP(c,n)))$ be a polynomial such that $\deg r = d \leq c$. Then there is a degree $d$ polynomial identity
-\[r(x) =  \sum_{p \in \cP} \lambda_p(x) p(x).\]
+\[\cP(n) = \{x_i^2 - x_i | i \in [2n]\} \cup \{\sum_i x_i - n\}.\]
+This is an interesting example because $\cP$ is not a Grobner basis for its ideal $\langle \cP \rangle$. Indeed, the Grobner basis for this ideal has exponential size. This shows that our framework extends beyond just Grobner bases. Recall that to prove $\cP$ is nice, we have to prove that it is spectrally rich, robust, and complete. Since the solution space lies in the hypercube, it is spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{}, due to the obvious symmetry of the constraints. 
+\begin{lemma}
+$\cP(n)$ is $d$-complete for any $d \leq n$.
 \end{lemma}
-\begin{lemma}\label{lem:highdeg}
-Let $S \subseteq [n]$ with $|S| \geq c+1$. Then there are degree $2|S|$ polynomial identities
-\[\prod_{i \in S} x_i = \sum_{i}^{t} g_i^2 + \sum_{p \in \cP} \lambda_p(x) p(x)\]
-and
-\[-\prod_{i \in S} x_i = \sum_{i}^{t} h_i^2 + \sum_{p \in \cP} \sigma_p(x) p(x)\]
-where the coefficients of each $g_i^2$ and $h_i^2$ are $O(1)$. 
-\end{lemma}
-To see how these two lemmas imply the theorem, first WLOG assume $r(x)$ is multilinear. Let $r(x) = r_h(x) + r_l(x)$, where $r_h$ is all monomials of degree at least $c+1$. Since $r,r_h \in \langle \cP(c,n)\rangle$, so too must $r_l$. By \prettyref{lem:lowdeg}, $r_l$ has a degree $d$ proof of non-negativity. By \prettyref{lem:highdeg}, each monomial in $r_h$ has a degree $2d$ proof where each SOS polynomial has constant-size coefficients. Since there are at most $n^{d+1}$ high degree monomials, this implies $\cP(c,n)$ is $(2d, \poly(n^d))$-effective. It remains to prove the two lemmas:
+\begin{proof}
+Let $S(n)$ denote the solution space of $\cP(n)$, and let $M = \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]$, where ${\bf v}$ is a vector of the standard monomial basis. Any zero eigenvector $c$ of $M$ can be associated with a polynomial $c^T{\bf v}$. Since 
+\[c^TMc = \sum_\alpha (c^T{\bf v}(\alpha))^2 = 0,\]
+we must have $c^Tv(\alpha) = 0$ for each $\alpha \in S$. We argue that any degree $d$ polynomial which is identically zero on $S(n)$ must have a degree $d$ derivation from $\cP(n)$. 
 
-\begin{proof}[(Proof of \prettyref{lem:lowdeg})]
-We proceed by induction on $c$. If $c = 0$, because $\cP(c,n)$ is feasible the only constant polynomial in $\cI(\cV_\R(\cP(c,n)))$ is the zero polynomial, which has the trivial derivation. Now consider the case of $c+1$. We proceed in two parts. First, if $r$ is fully symmetric, we show that it has a degree $d$ derivation. Secondly, for any polynomial $p \in \cI(\cV_\R(\cP(c,n)))$ we prove that $p - \frac{1}{n!}\sum_{\sigma \in S_n} \sigma p$ has a degree $d$ derivation from $\cP$, where $\sigma$ acts on $p$ by permuting the labels of the variables. Taken together, these two facts imply that $r$ has a degree $d$ derivation from $\cP$.
+We proceed by induction on $d$. If $d = 0$, the only constant polynomial zero on $S(n)$ is the zero polynomial, which has the trivial derivation. Now consider the case of $d = c+1$. We proceed in two parts. First, if $r$ is fully symmetric, we show that it has a degree $d$ derivation. Secondly, for any polynomial $p$ which is zero on $S(n)$, we prove that $p - \frac{1}{n!}\sum_{\sigma \in \cS_n} \sigma p$ has a degree $d$ derivation from $\cP$, where $\sigma$ acts on $p$ by permuting the labels of the variables. Taken together, these two facts imply that $r$ has a degree $d$ derivation from $\cP(n)$.
 
-To prove the first part, note that a symmetric polynomial $r$ is a linear combination of the elementary symmetric polynomials, and it is clear that $e_k(x)$ can be derived by taking the polynomial $(\sum_i x_i - c)^k$, reducing it to multilinear using the boolean constraints, and then reducing by $e_l(x)$ for each $l < k$. This will result in a constant polynomial, which must be the zero polynomial since that is the only constant polynomial in $p \in \cI(\cV_\R(\cP(c,n)))$. 
+To prove the first part, note that a symmetric polynomial $r$ is a linear combination of the elementary symmetric polynomials $e_1,\dots,e_c$, and it is clear that $e_k(x)$ can be derived by taking the polynomial $(\sum_i x_i - n)^k$, reducing it to multilinear using the boolean constraints, and then reducing by $e_l(x)$ for each $l < k$. This will result in a constant polynomial, which must be the zero polynomial since we are only adding polynomials which are zero on $S(n)$, so the resulting polynomial must be zero on $S(n)$. 
 
 To prove the second part, let $\sigma_{ij}$ be the transposition of labels $i$ and $j$, and consider the polynomial $r - \sigma_{ij}r$. Writing $r = r_ix_i + r_jx_j + r_{ij}x_ix_j + q_{ij}$, where none of $r_i$,$r_j$,$r_{ij}$, nor $q_{ij}$ depend on $x_i$ or $x_j$, we can rewrite
 \[r - \sigma_{ij}r = (r_i - r_j)(x_i - x_j).\]
-Now because $r - \sigma_{ij}r$ evalutes to zero on any boolean string with exactly $c$ ones, if we set $x_i = 1$ and $x_j = 0$, we know that $r_i - r_j$ is a polynomial that must evaluate to zero on any boolean string with exactly $c-1$ ones. Because $\cP(c-1,n-2)$ is complete and $\deg r_i - r_j = d-1 \leq c-1$, by the inductive hypothesis, $r_i - r_j$ has a degree $d-1$ proof from $\cP(c-1,n-2)$ (recall that since $c \leq n/2$, $c-1 \leq (n-2)/2$). This implies that $(r_i - r_j)(x_i - x_j)$ has a degree $d-1$ proof from $\cP(c,n)$:
+Now because $r - \sigma_{ij}r$ evalutes to zero on any boolean string with exactly $n$ ones, if we set $x_i = 1$ and $x_j = 0$, we know that $r_i - r_j$ is a polynomial that must evaluate to zero on any boolean string with exactly $n-1$ ones. Because $\deg (r_i - r_j) = d-1$, by the inductive hypothesis, $r_i - r_j$ has a degree $d-1$ proof from $\cP(n-1)$ (since $d \leq n$, clearly $d-1 \leq n-1$). This implies that $(r_i - r_j)(x_i - x_j)$ has a degree $d-1$ proof from $\cP(n)$:
 \begin{align*}
-(r_i - r_j)(x_i - x_j) &= \left[\sum_{t \neq i,j} \lambda_t\cdot (x_t^2 - x_t) + \lambda \cdot \left(\sum_{t \neq i,j} x_t - (c-1)\right)\right](x_i - x_j) \\
-&= \sum_{t} \lambda'_t \cdot (x_t^2 - x_t) + \lambda \cdot \left(\sum_{t \neq i,j} x_t - (c-1) + (x_i + x_j - 1)\right)(x_i - x_j)\\
-&= \sum_t \lambda'_t \cdot (x_t^2 - x_t) +\lambda' \cdot \left(\sum_t x_t - c\right)
+(r_i - r_j)(x_i - x_j) &= \left[\sum_{t \neq i,j} \lambda_t\cdot (x_t^2 - x_t) + \lambda \cdot \left(\sum_{t \neq i,j} x_t - (n-1)\right)\right](x_i - x_j) \\
+&= \sum_{t} \lambda'_t \cdot (x_t^2 - x_t) + \lambda \cdot \left(\sum_{t \neq i,j} x_t - (n-1) + (x_i + x_j - 1)\right)(x_i - x_j)\\
+&= \sum_t \lambda'_t \cdot (x_t^2 - x_t) +\lambda' \cdot \left(\sum_t x_t - n\right)
 \end{align*}
-where we used the fact that $(x_i + x_j - 1)(x_i - x_j) - (x_i^2 - x_i) + (x_j^2 - x_j) = 0$. The degree of this derivation is at most $d$ because each $\lambda_t$ has degree at most $d-3$, and $\lambda'_t = \lambda_t(x_i - x_j)$, and similarly for $\lambda$. Thus the inductive hypothesis implies that $r - \sigma_{ij}r$ has a degree $d$ derivation, and since transpositions generate the symmetric group, this implies that $r - \frac{1}{n!}\sum_{\sigma \in S_n} \sigma r$ has a degree $d$ proof from $\cP(c,n)$.
+where we used the fact that $(x_i + x_j - 1)(x_i - x_j) - (x_i^2 - x_i) + (x_j^2 - x_j) = 0$. The degree of this derivation is at most $d$ because each $\lambda_t$ has degree at most $d-3$, and $\lambda'_t = \lambda_t(x_i - x_j)$, and similarly for $\lambda$. Thus the inductive hypothesis implies that $r - \sigma_{ij}r$ has a degree $d$ derivation, and since transpositions generate the symmetric group, this implies that $r - \frac{1}{n!}\sum_{\sigma \in \S_n} \sigma r$ has a degree $d$ proof from $\cP(n)$.
 \end{proof}
-
-\begin{proof}[(Proof of \prettyref{lem:highdeg})]
-First, note that for any monomial $x_M = \prod_{i \in M} x_i$, we have $(1-x_M)^2 = (1-x_M) + q_1(x)$ and $x_M^2 = x_M + q_2(x)$, where $q_1(x)$ and $q_2(x)$ are generated from the boolean constraints and of degree $|M|$. Now WLOG let $S = \{1,2,3,\dots,c+1\}$. If we multiply $c - \sum_{i=1}^n x_i$ by $x_1x_2\dots x_c$ and reduce by the boolean constriants, we get the polynomial $-x_1x_2\dots x_c(x_{c+1} + x_{c+2} + \dots x_n)$. Now because each monomial is a square modulo the boolean constraints, this implies that 
-\[-x_S = \sum_{i = c+2}^n (x_1x_2\dots x_c \cdot x_i)^2 - x_1x_2\dots x_c(\sum_{i=1}^n x_i - c) + \sum_{i=1}^n \lambda_i(x_i^2 - x_i).\]
-and as we explained above, $x_S = x_S^2 + \sum_{i=1}^n \lambda'_i(x_i^2 - x_i)$. Thus $x_S$ has a degree-$2|S|$ proof from $\cP(c,n)$ with SOS coefficients bounded by $O(1)$.
-\end{proof}
-
-The fact that this ideal is effective gives an example of a set of constraints which are very far from being a Grobner Basis for their ideal, yet still allow for effective derivations, and thus any SOS proofs from these constraints can be taken to have small bit complexity. 
-
 
