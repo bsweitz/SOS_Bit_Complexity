@@ -1,12 +1,12 @@
 \section{MAX-BISECTION Constraints}\label{sec:balance}
-In this section, we prove our earlier claim that the MAX-BISECTION constraints have a nice solution space. Recall the constraints:
+In this section, we prove our earlier claim that the MAX-BISECTION constraints contain a blocking solution set. Recall the constraints:
 \[\cP(n) = \{x_i^2 - x_i | i \in [2n]\} \cup \{\sum_i x_i - n\}.\]
-This is an interesting example because $\cP$ is not a Grobner basis for its ideal $\langle \cP \rangle$. Indeed, the Grobner basis for this ideal has exponential size. This shows that our framework extends beyond just Grobner bases. Recall that to prove $\cP$ is nice, we have to prove that it is spectrally rich, robust, and complete. Since the solution space lies in the hypercube, it is spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{}, due to the obvious symmetry of the constraints. 
+This is an interesting example because $\cP$ is not a Grobner basis for its ideal $\langle \cP \rangle$. Indeed, the Grobner basis for this ideal has exponential size. This shows that our framework extends beyond just Grobner bases. Recall that to prove $\cP$ is nice, we have to prove that it is spectrally rich, robust, and complete. Since the solution space lies in the hypercube, it is spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{}, due to the similar symmetry of the constraints. 
 \begin{lemma}
 $\cP(n)$ is $d$-complete for any $d \leq n$.
 \end{lemma}
 \begin{proof}
-Let $S(n)$ denote the solution space of $\cP(n)$, and let $M = \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]$, where ${\bf v}$ is a vector of the standard monomial basis. Any zero eigenvector $c$ of $M$ can be associated with a polynomial $c^T{\bf v}$. Since 
+Let $S(n)$ denote the solution space of $\cP(n)$, and let $M = \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]$. Any zero eigenvector $c$ of $M$ can be associated with a polynomial $c^T{\bf v}$. Since 
 \[c^TMc = \sum_\alpha (c^T{\bf v}(\alpha))^2 = 0,\]
 we must have $c^Tv(\alpha) = 0$ for each $\alpha \in S$. We argue that any degree $d$ polynomial which is identically zero on $S(n)$ must have a degree $d$ derivation from $\cP(n)$. 
 
@@ -22,6 +22,6 @@ Now because $r - \sigma_{ij}r$ evalutes to zero on any boolean string with exact
 &= \sum_{t} \lambda'_t \cdot (x_t^2 - x_t) + \lambda \cdot \left(\sum_{t \neq i,j} x_t - (n-1) + (x_i + x_j - 1)\right)(x_i - x_j)\\
 &= \sum_t \lambda'_t \cdot (x_t^2 - x_t) +\lambda' \cdot \left(\sum_t x_t - n\right)
 \end{align*}
-where we used the fact that $(x_i + x_j - 1)(x_i - x_j) - (x_i^2 - x_i) + (x_j^2 - x_j) = 0$. The degree of this derivation is at most $d$ because each $\lambda_t$ has degree at most $d-3$, and $\lambda'_t = \lambda_t(x_i - x_j)$, and similarly for $\lambda$. Thus the inductive hypothesis implies that $r - \sigma_{ij}r$ has a degree $d$ derivation, and since transpositions generate the symmetric group, this implies that $r - \frac{1}{n!}\sum_{\sigma \in \S_n} \sigma r$ has a degree $d$ proof from $\cP(n)$.
+where we used the fact that $(x_i + x_j - 1)(x_i - x_j) - (x_i^2 - x_i) + (x_j^2 - x_j) = 0$. The degree of this derivation is at most $d$ because each $\lambda_t$ has degree at most $d-3$, and $\lambda'_t = \lambda_t(x_i - x_j)$, and similarly for $\lambda$. Thus the inductive hypothesis implies that $r - \sigma_{ij}r$ has a degree $d$ derivation, and since transpositions generate the symmetric group, this implies that $r - \frac{1}{n!}\sum_{\sigma \in \cS_n} \sigma r$ has a degree $d$ proof from $\cP(n)$.
 \end{proof}
 
