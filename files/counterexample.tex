@@ -27,7 +27,7 @@ To show such a $\phi$ exists, we define it as follows. By the constraints, every
 \subsection{A Boolean System}
 One simple way to try to make the system Boolean is to just add the constraints $y_i^2 = y_i$ to the system. Unfortunately, in that case it is easy to prove that $y_i - y_j = 0$ for each $i$ and $j$, and of course $y_n = y_n^2 = 0$. It is too easy for SOS to figure out what each $y_i$ should look like. Previously, the variables were unconstrained in any way, and we want to imitate that. We draw inspiration from the Knapsack problem, and we instead replace each instance of the variable $y_i$ with a sum of $2k$ Boolean variables 
 \[y_i \rightarrow \sum_j w_{ij} - k,\] 
-and we consider the non-negative polynomial $\epsilon - (\sum_j w_{1j} - k)$. Clearly there is a degree two proof of non-negativity for this polynomial since we can just replace each instance of $y_i$ with $\sum_j w_{ij}$ in \prettyref{eq:proof}. 
+and we consider the non-negative polynomial $\epsilon - (\sum_j w_{1j} - k)$. Clearly there is a degree two proof of non-negativity for this polynomial since we can just replace each instance of $y_i$ with $\sum_j w_{ij} - k$ in \prettyref{eq:proof}. 
 
 It remains to show that there are no other proofs that have only small coefficients. Here, we use the fact that the Knapsack problem is hard for SOS: there is no SOS proof of degree less than $\Omega(k)$ that $\sum_j w_{ij} - k$ is not equal to any number $r \in (0,1)$ \cite{}. This allows us to use the Knapsack pseudodistribution to "pretend" that $\sum_j w_{ij} - k = (2\epsilon)^{2^{i-1}}$. Specifically, for each $r \in (0,1)$, there is a linear functional $\phi_r$ defined on polynomials of $2k$ Boolean variables which satisfies
 \begin{itemize}
