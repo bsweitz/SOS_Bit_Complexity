@@ -54,15 +54,15 @@ However, in a majority of applications of SoS SDP relaxations in combinatorial o
 %
 Specifically, these include constraints such as $\{ x_i^2 \leq 1 | i \leq [n]\}$, which yield explicit bounds on the values of the variables.
 %
-In Archimedian settings, if there is an approximate SoS certificate for $r(x) \geq \theta$, then there exists a proper SoS certificate for a slightly weaker lower bound $r(x) \geq \theta - o(1)$.
+In these settings, if there is an approximate SoS certificate for $r(x) \geq \theta$, then there exists a proper SoS certificate for a slightly weaker lower bound $r(x) \geq \theta - o(1)$.
 %
 Therefore, additive error incurred in semidefinite programming can often be traded off for a slightly weaker objective value.
 %
 The issue highlighted by O'Donnell is far more serious in that the coefficients of the SoS certificate are too large -- thereby directly affecting the runtime of the ellipsoid algorithm.
 
-On a positive note, O'Donnell shows that a polynomial system whose only constraints are booleanness constraints, $\{x_i^2 = x_i | i \in [n]\}$, always admit SoS certificates with polynomial bit complexity.  
+On a positive note, O'Donnell shows that a polynomial system whose only constraints are the Boolean constraints $\{x_i^2 = x_i | i \in [n]\}$ always admit SoS certificates with polynomial bit complexity.  
 %
-He proceeds to ask whether all polynomial systems that include boolean constraints among others, always admit bounded SoS certificates.
+He proceeds to ask whether all polynomial systems that include boolean constraints, potentially among others, always admit bounded SoS certificates.
 
 
 \subsection{Our Results}
@@ -74,22 +74,25 @@ First, we present an easily verifiable and broadly applicable set of sufficient 
 %
 Roughly speaking, we show that polynomial systems with {\it rich} sets of solutions have bounded SoS certificates of non-negativity.
 %
-More precisely, consider a system consisting of polynomial equalities $\cP$ and inequalities $\cQ$.  Our approach consists of looking for assignments $S$ satisfying three criteria (see \prettyref{sec:} for formal statement).  
+More precisely, consider a system consisting of polynomial equalities $\cP$ and inequalities $\cQ$.  Our approach consists of looking for assignments $S$ satisfying three criteria (see \prettyref{def:nice} and \prettyref{thm:main} for formal statements).  
+\begin{theorem}
+Assume $(\cP, \cQ, S)$ satisfies:
 \begin{enumerate}
 \item The assignments $S$ robustly satisfy the inequalities in $\cQ$.  
-\item Degree $d$ polynomial calculus proof system is complete over $S$.  In other words, all polynomial identities over $S$ can be derived using a degree $d$ polynomial derivation from the equalities $\cP$.
-\item The assignments $S$ are {\it spectrally rich} in that smallest non-zero eigenvalue of their covariance matrix is at least $\frac{1}{2^{\poly(n)}}$. 
+\item The polynomial calculus proof system is both complete and efficient over $S$.  In other words, all degree $d$ polynomial identities over $S$ can be derived using a degree $O(d)$ polynomial derivation from the equalities $\cP$.
+\item The assignments $S$ are {\it spectrally rich} in that smallest non-zero eigenvalue of their covariance matrix is at least $2^{-\poly(n^d)}$. 
 \end{enumerate}
-We show that if a polynomial system $(\cP,\cQ)$ admits a set of rich assignments $S$, then all SoS proofs of non-negativity from $(\cP, \cQ)$ have polynomially bounded bit complexity. 
+Then if $r$ has a degree $d$ proof of non-negativity from $\cP$ and $\cQ$, it also has a degree $O(d)$ proof of non-negativity with coefficients bounded by $2^{\poly(n^d)}$.
+\end{theorem}
 
-We demonstrate the broad applicability of the above set of sufficient conditions by using them to show upper bounds on bit complexity for \textsc{Max-CSP}, \textsc{Max Clique}, \textsc{Matching}, \textsc{Balanced Separator} and optimization over unit sphere.  In each case, the above sufficient conditions can be verified for a very simple and natural choice of set of solutions $S$. 
+We demonstrate the broad applicability of the above set of sufficient conditions by using them to show upper bounds on bit complexity for \textsc{Max-CSP}, \textsc{Max-Clique}, \textsc{Matching}, \textsc{Balanced Separator}, \textsc{Max-Bisection}, and optimization over the unit sphere.  In each case, the above sufficient conditions can be verified easily. 
 %
 
 The above set of sufficient conditions are widely applicable in combinatorial optimization, wherein the polynomial system is typically a relaxation of a well-known set of integer solutions.  
 %
-In such a setup with integer solutions, we observe in \prettyref{sec:whatever} that spectral richness is an immediate consequence of the discrete nature of the set of solutions.
+In such a setup with integer solutions, we observe in \prettyref{sec:nicespaces} that spectral richness is an immediate consequence of the discrete nature of the set of solutions.
 %
-Therefore, in all these setups, the only non-trivial thing to verify is the completeness of the degree $d$ polynomial calculus proof system.
+Therefore, in all these setups, the only non-trivial thing to verify is the efficiency of the polynomial calculus proof system.
 %
 
 
@@ -108,11 +111,12 @@ Unfortunately, we refute both of the above possibilities by exhibiting a counter
 %
 Formally, we show the following:
 
-\begin{theorem}
+\begin{theorem}\label{thm:counter}
 	There exists a system of quadratic equations on $n$ variables such that
 	\begin{itemize}
-	\item There exists a degree $2$ SoS certificate of non-negativity, albeit with doubly exponentially large coefficients.
-	\item No SoS certificate of degree smaller than $\sqrt{n}$ has coefficients smaller than $2^{2^{\sqrt{n}}}$.
+	\item The system includes the equation $x_i^2 - x_i = 0$ for each $i \in [n]$.
+	\item There exists a polynomial with a degree $2$ SoS certificate of non-negativity, albeit with doubly exponentially large coefficients.
+	\item No SoS certificate of degree $d \leq \sqrt{n}$ has coefficients smaller than $\Omega\left(\frac{1}{n^d}\cdot 2^{\exp(\sqrt{n})}\right)$.
 	\end{itemize}	
 \end{theorem}
 
@@ -121,6 +125,7 @@ Formally, we show the following:
 **** be consistent with terminology, polynomial system, polynomial inequalities..
 **** check if above theorem statement agrees with final result
 **** mark above theorem as informal, or use theoremrestate 
+**** Broken References
 
 
 

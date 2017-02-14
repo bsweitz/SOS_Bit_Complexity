@@ -22,7 +22,7 @@ If $\cP$ is a Gr\"obner basis, then every degree $d$ polynomial in $\langle \cP\
 \end{proof}
 Two polynomial optimization problems captured by \prettyref{lem:grobner} are the \textsc{Max-CSP} problem, and the \textsc{Max-Clique} problem. While this fact was already known for \text{Max-CSP}, our technique is the first one to give results for systems with more than just Boolean constraints.
 
-Furthermore, if $\cQ$ is pretty simple, it is not too difficult to prove that it does not introduce any additional low degree polynomial equalities. For example, consider \textsc{Balanced-Separator}: $\cP = \{x_i^2-x_i | i \in [n]\}$ and $\cQ = \{\sum_i x_i - n/3, 2n/3 - \sum_i x_i\}$. These have a solution space on the bit strings with between $n/3$ and $2n/3$ ones. The polynomial equalities that define this set are the Boolean equalities and $\prod_{i \in T} x_i$, $\prod_{i \in T} (1-x_i)$ for each $T$ with $|T| > 2n/3$. These are the smallest degree polynomials that are zero on $S$ that are not in $\langle \cP\rangle$, and $\cP$ is a Grobner basis, so $S$ is $d$-complete as long as $d < 2n/3$. The polynomials in $\cQ$ can be perturbed by $1/2$ to make them $1/2$-robust, so $S$ is a blocking solution set. 
+Furthermore, if $\cQ$ is pretty simple, it is not too difficult to prove that it does not introduce any additional low degree polynomial equalities. For example, consider \textsc{Balanced Separator}: $\cP = \{x_i^2-x_i | i \in [n]\}$ and $\cQ = \{\sum_i x_i - n/3, 2n/3 - \sum_i x_i\}$. These have a solution space $S$ on the bit strings with between $n/3$ and $2n/3$ ones. Now if $r$ is a nonzero multilinear polynomial which is zero on $S$, then its symmetrized version $sr = \frac{1}{n!}\sum_{\sigma \in \cS_n} \sigma r$ must also be zero on $S$, where $\sigma$ acts by permuting the variable names. However, $sr$ is a univariate polynomial in $\sum_i x_i$ (modulo the Boolean constraints). This univariate polynomial has $n/3$ zeros, and thus must have degree at least $n/3$. Since symmetrizing doesn't change degree, we conclude that $r$ also has degree at least $n/3$. Thus the polynomials that are zero on $S$ that aren't in $\langle \cP\rangle$ have degree at least $n/3$. Further, $\cP$ is a Gr\"obner basis, so $(\cP, \cQ, S)$ is $d$-complete as long as $d < n/3$. The polynomials in $\cQ$ can be perturbed by $1/2$ to make them $1/2$-robust, so $(\cP, \cQ, S)$ is nice. 
 
 Gr\"obner bases are useful, but often extremely expensive to compute, and having access to one is a luxury in many optimization problems. Because of this, one might worry that Gr\"obner bases are the \emph{only} constraints that are nice, and that \prettyref{thm:main} will not be very applicable. We dispel this notion in \prettyref{sec:balance} by showing the natural description of the \textsc{Max-Bisection} ideal is $d$-complete, even though its Gr\"obner basis has exponential size. Likewise, in \cite{Braun:2016:MPN:2884435.2884510}, it was proven that the \textsc{Matching} constraints are $2d$-complete, which is another set of constraints that is not a Gr\"obner basis. 
 
@@ -38,17 +38,17 @@ To prove spectral-richness, we note that in \cite{10.2307/2695802} the author gi
 \end{proof}
 
 We collect the examples discussed in this section here for simplicity:
-\begin{theorem}\label{thm:examples}
+\begin{corollary}\label{cor:examples}
 The following constraints are nice:
 \begin{itemize}
-\item CSPs: $\cP = \{x_i^2 - x_i | i \in [n]\}$. 
-\item CLIQUE: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{x_ix_j | (i,j) \in E\}$.
-\item BALANCED CSPs: $\cP = \{x_i^2 - x_i | i \in [n]\}$, $\cQ = \{2n/3 - \sum_i x_i, \sum_i x_i - n/3\}$.
-\item MAX-BISECTION: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}$.
-\item MATCHING: $\cP = \{x_{ij}^2 - x_{ij} | i,j \in [n]\} \cup \{\sum_i x_{ij} - 1 | i \in [n]\} \cup \{x_{ij}x_{ik} | i,j,k \in [n]\}$.
-\item UNIT-VECTOR: $\cP = \{\sum_i x_i^2 - 1\}$.
+\item \textsc{Max-CSP}: $\cP = \{x_i^2 - x_i | i \in [n]\}$. 
+\item \textsc{Max-Clique}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{x_ix_j | (i,j) \in E\}$.
+\item \textsc{Balanced Separator}: $\cP = \{x_i^2 - x_i | i \in [n]\}$, $\cQ = \{2n/3 - \sum_i x_i, \sum_i x_i - n/3\}$.
+\item \textsc{Max-Bisection}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}$.
+\item \textsc{Matching}: $\cP = \{x_{ij}^2 - x_{ij} | i,j \in [n]\} \cup \{\sum_i x_{ij} - 1 | i \in [n]\} \cup \{x_{ij}x_{ik} | i,j,k \in [n]\}$.
+\item \textsc{Unit-Vector}: $\cP = \{\sum_i x_i^2 - 1\}$.
 \end{itemize}
-\end{theorem}
+\end{corollary}
 
 \subsection{Limitations}
-While \prettyref{thm:main} allows us to prove that many different systems of polynomial constraints have well-behaved SOS proofs, there are a few areas where it comes up short. Most noticeably, to contain a blocking set of solutions the solution space has to be nonempty. This can be a problem when trying to find SOS proofs of infeasibility. For example, one common technique is to introduce lower bounds on an objective function $f(x)$ of a maximization problem as constraints and attempt to use SOS to find a refutation, i.e. a proof of non-negativity for the constant polynomial $-1$. We are unable to show that these proofs can be taken to have polynomial bit complexity since they have empty solution spaces. As another example, we are unable to use our framework to show that refutations of the knapsack constraints use only polynomially many bits, even though it is clear by simply examining these known refutations that they only involve small coefficients. 
+While \prettyref{thm:main} allows us to prove that many different systems of polynomial constraints have well-behaved SoS proofs, there are a few areas where it comes up short. Most noticeably, to contain a blocking set of solutions the solution space has to be nonempty. This can be a problem when trying to find SoS proofs of infeasibility. For example, one common technique is to introduce lower bounds on an objective function $f(x)$ of a maximization problem as constraints and attempt to use SoS to find a refutation, i.e. a proof of non-negativity for the constant polynomial $-1$. We are unable to show that these proofs can be taken to have polynomial bit complexity since they have empty solution spaces. As another example, we are unable to use our framework to show that refutations of the knapsack constraints use only polynomially many bits, even though it is clear by simply examining these known refutations that they only involve small coefficients. 

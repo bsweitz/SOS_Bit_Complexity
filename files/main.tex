@@ -31,7 +31,7 @@ Now after averaging over $S$, the zero eigenspace of $C'$ is contained in the ze
 \[\poly(\|r\|,\|S\|) \geq \delta Tr(C) + \sum_{i=1}^\ell \delta Tr(D_i') q_i(\alpha).\]
 Because each $q_i(\alpha) \geq \epsilon$, we get $C'$ and $D_i'$ have entries bounded by $\poly(\|r\|, \|S\|, \frac{1}{\delta}, \frac{1}{\epsilon})$.
 
-The only thing left to do is to bound the coefficients $\lambda_i'$, but this is easy because the SOS proof is linear in these coefficients. If we imagine the coefficients of the $\lambda_i'$ as variables, then the linear system induced by the polynomial identity
+The only thing left to do is to bound the coefficients $\lambda_i'$, but this is easy because the SoS proof is linear in these coefficients. If we imagine the coefficients of the $\lambda_i'$ as variables, then the linear system induced by the polynomial identity
 \[r(x) - \langle C', {\bf v}{\bf v}^T\rangle - \sum_{i=1}^\ell \langle D_i', {\bf v}{\bf v}^T\rangle = \sum_{i=1}^m \lambda_i' p_i\]
 is clearly feasible, and the coefficients of the LHS are bounded by $\poly(\|r\|, \|S\|, \frac{1}{\delta}, \frac{1}{\epsilon})$. There are $O(n^k)$ variables, so by Cramer's rule, the coefficients of the $\lambda_i'$ can be taken to be bounded by $\poly(\|\cP\|^{n^k}, \frac{1}{\delta}, \frac{1}{\epsilon}, \|r\|, \|S\|, n!)$. $\|\cP\|, \|r\| \leq 2^{\poly(n^d)}$ as they are considered part of the input, $\|S\| \leq 2^{\poly(n^d)}$ by the explicitly bounded assumption, and $d \leq k$. Thus, this bound is at most $2^{\poly(n^k, \log \frac{1}{\delta}, \log \frac{1}{\epsilon})}$.
 

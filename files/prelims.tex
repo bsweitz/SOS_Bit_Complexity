@@ -30,9 +30,9 @@ We say the proof has degree $d$ if $\max \{\deg h_i^2, \deg s_j^2q_i, \deg \lamb
 The idea behind this terminology is that if such a proof exists, then $r$ must be non-negative on $S$ since the first two terms are non-negative, and the last term is zero. We will be concerned with not just the degree of these proofs, but also their bit complexity. To this end, we define the following norms on polynomials and proofs: For $p(x) \in \R[x]$, we write $\|p\|$ for the absolute value of the maximum coefficient of $p$ in the standard monomial basis, and for any collection of polynomials $\cP$, we write $\|\cP\| = \max_{p \in \cP} \|p\|$. We will also require a bound on $\|S\| = \max_{\alpha \in S} \|\alpha\|$. Throughout this paper we will assume that $\|\alpha\| \leq 2^{\poly(n^d)}$, often referred to as the \emph{explicitly bounded} case. 
 
 \subsection{Nice Solution Spaces}
-In this section we define the conditions we require in order to guarantee that SOS proofs from $\cP$ and $\cQ$ have low bit-complexity. Our goal is to develop easily checkable conditions that suffice to imply that SOS proofs may be taken to lie in a polynomially-bounded region. We will require the constraints to satisfy three properties. Define the moment matrix
+In this section we define the conditions we require in order to guarantee that SoS proofs from $\cP$ and $\cQ$ have low bit-complexity. Our goal is to develop easily checkable conditions that suffice to imply that SoS proofs may be taken to lie in a polynomially-bounded region. We will require the constraints to satisfy three properties. Define the moment matrix
 \[M \coloneqq E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T].\]
-\begin{definition}
+\begin{definition}\label{def:nice}
 Let everything be as above. 
 \begin{itemize}
 \item We say that $(\cP, \cQ, S)$ is \emph{$\delta$-spectrally rich up to degree $d$} if every nonzero eigenvalue of $M$ is at least $\delta$.
