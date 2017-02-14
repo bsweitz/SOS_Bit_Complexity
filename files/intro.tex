@@ -18,14 +18,12 @@ Specifically if we associate $\{0,1\}$ variables $\{x_1,\ldots,x_n\}$ for the ve
 \begin{align*}
 \text{ Minimize } \ \ \  \sum_{(i,j) \in E} (x_i-x_j)^2  \ \ \ \ \text{ subject to } \left\{ x_i^2 = x_i \forall i\ \ \frac{n}{3} \leq \sum_i x_i \leq \frac{2n}{3} \right\}
 \end{align*} 
-Here the constraint $x_i^2 = x_i$ ensures $x_i \in \{0,1\}$ while the inequalities enforce the condition that the cut is balanced.
-
-More generally, a low-degree polynomial optimization is of the form,
+Here the constraint $x_i^2 = x_i$ ensures $x_i \in \{0,1\}$ while the inequalities enforce the condition that the cut is balanced. More generally, a low-degree polynomial optimization is of the form
 \begin{align*}
-\text{ Minimize } & r(x)   & \text{ subject to } \text{ equalities } \cP = \left\{ p_i(x) = 0 | i \in [n] \right\} \text{ and inequalities } \cQ = \left\{ q_i(x) \geq 0 | i \in [m] \right\}
+&\text{ Minimize } r(x) \text{ subject to } \\ &\text{ equalities } \cP = \left\{ p_i(x) = 0 | i \in [n] \right\} \text{ and inequalities } \cQ = \left\{ q_i(x) \geq 0 | i \in [m] \right\}
 \end{align*} 
 
-A SoS certificate of a lower bound $ r(x) \geq \theta$ is given by a polynomial identity of the form
+An SoS certificate of a lower bound $ r(x) \geq \theta$ is given by a polynomial identity of the form
 \[ r(x) - \theta  = \sum_{i} h_i(x)^2 + \sum_{i \in [m]} \left(\sum_{j}^{t_j} s_j^2(x) \right) \cdot q_j(x) + \sum_{i \in [n]} \lambda_i(x) p_i(x) \]
 Notice that for all $x$ satisfying the equalities $\cP$ and the inequalities $\cQ$, the right hand side of the above identity is manifestly non-negative, thereby certifying that $r(x) \geq \theta$.  The degree of the SoS certificate is the maximum degree of the polynomials involved, i.e., $d = \max\{\deg h_i^2, \deg s_j^2 q_i, \deg \lambda_i p_i\}$.
 

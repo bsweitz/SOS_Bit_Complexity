@@ -1,50 +1,58 @@
-\documentclass[11pt,letterpaper]{article}
+\documentclass[a4paper,UKenglish]{lipics-v2016}
+%This is a template for producing LIPIcs articles. 
+%See lipics-manual.pdf for further information.
+%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
+%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
+% for section-numbered lemmas etc., use "numberwithinsect"
+ 
+\usepackage{microtype}%if unwanted, comment out or use option "draft"
 
-% options for preamble
+%\graphicspath{{./graphics/}}%helpful if your graphic files are in another directory
 
-\def\showauthornotes{0}
-\def\showtableofcontents{0}
-\def\showkeys{0}
-\def\showdraftbox{0}
-\def\showcolorlinks{1}
-\def\usemicrotype{1}
-\def\showfixme{0}
-\def\showdefine{0}
+\bibliographystyle{plainurl}% the recommended bibstyle
+
+% Author macros::begin %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{preamble/macros}
-%\input{preamble/macros-adv}
-
-\setcounter{page}{1}
-
 \title{On the Bit Complexity of Sum-of-Squares Proofs}
 
-\author{%
-\normalsize
-Ben Weitz\thanks{UC Berkeley, \protect\email{bsweitz@cs.berkeley.edu}. Supported by an NSF Graduate Research Fellowship (NSF award no DGE 1106400).}
-}
+%% Please provide for each author the \author and \affil macro, even when authors have the same affiliation, i.e. for each author there needs to be the  \author and \affil macros
+\author[1]{Prasad Raghavendra}
+\author[2]{Benjamin Weitz}
+\affil[1]{UC Berkeley, Berkeley CA, USA\\
+  \texttt{raghavendra@berkeley.edu}}
+\affil[2]{UC Berkeley, Berkeley CA, USA\\
+  \texttt{bsweitz@eecs.berkeley.edu} \\
+	Supported by an NSF Graduate Research Fellowship (DGE 1106400)}
+\authorrunning{P. Raghavendra and B. Weitz} %mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
 
-%\date{}
+\Copyright{Prasad Raghavendra and Benjamin Weitz}%mandatory, please use full first names. LIPIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
 
-\setcounter{tocdepth}{2}
+\subjclass{F.2.2 Nonnumerical Algorithms and Problems}% mandatory: Please choose ACM 1998 classifications from http://www.acm.org/about/class/ccs98-html . E.g., cite as "F.1.1 Models of Computation". 
+\keywords{Sum-of-Squares, Combinatorial Optimization, Proof Complexity}% mandatory: Please provide 1-5 keywords
+% Author macros::end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\EventEditors{John Q. Open and Joan R. Acces}
+\EventNoEds{2}
+\EventLongTitle{42nd Conference on Very Important Topics (CVIT 2016)}
+\EventShortTitle{CVIT 2016}
+\EventAcronym{CVIT}
+\EventYear{2016}
+\EventDate{December 24--27, 2016}
+\EventLocation{Little Whinging, United Kingdom}
+\EventLogo{}
+\SeriesVolume{42}
+\ArticleNo{23}
+% Editor-only macros::end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
 \maketitle
 
-\draftbox
-
 \thispagestyle{empty}
 
 \input{files/abstract}
-\clearpage
-
-% tableofcontents added for better navigability of the document
-\ifnum\showtableofcontents=1
-{
-\tableofcontents
-\thispagestyle{empty}
- }
-\fi
 
 \clearpage
 
@@ -64,8 +72,6 @@ Ben Weitz\thanks{UC Berkeley, \protect\email{bsweitz@cs.berkeley.edu}. Supported
 
 %\section*{Acknowledgements}
 
-\addreferencesection
-\bibliographystyle{amsalpha}
 \bibliography{files/writeup,files/pc}
 
 \appendix

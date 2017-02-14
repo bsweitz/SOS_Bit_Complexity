@@ -1,80 +1,95 @@
-\newcommand{\etalchar}[1]{$^{#1}$}
-\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
-\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
-% \MRhref is called by the amsart/book/proc definition of \MR.
-\providecommand{\MRhref}[2]{%
-  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
-}
-\providecommand{\href}[2]{#2}
-\begin{thebibliography}{BBCH{\etalchar{+}}16}
+\begin{thebibliography}{10}
 
-\bibitem[BBCH{\etalchar{+}}16]{Braun:2016:MPN:2884435.2884510}
-G\'{a}bor Braun, Jonah Brown-Cohen, Arefin Huq, Sebastian Pokutta, Prasad
-  Raghavendra, Aurko Roy, Benjamin Weitz, and Daniel Zink, \emph{The matching
-  problem has no small symmetric sdp}, Proceedings of the Twenty-seventh Annual
-  ACM-SIAM Symposium on Discrete Algorithms (Philadelphia, PA, USA), SODA '16,
-  Society for Industrial and Applied Mathematics, 2016, pp.~1067--1078.
+\bibitem{barak2011rounding}
+B.~Barak, P.~Raghavendra, and D.~Steurer.
+\newblock Rounding semidefinite programming hierarchies via global correlation.
+\newblock In {\em Proc.\ FOCS}, pages 472--481. IEEE, 2011.
 
-\bibitem[BBH{\etalchar{+}}12]{BBHKSZ12}
+\bibitem{BBHKSZ12}
 Boaz Barak, Fernando~G.S.L. Brandao, Aram~W. Harrow, Jonathan Kelner, David
-  Steurer, and Yuan Zhou, \emph{Hypercontractivity, sum-of-squares proofs, and
-  their applications}, Proceedings of the Forty-fourth Annual ACM Symposium on
-  Theory of Computing (New York, NY, USA), STOC '12, ACM, 2012, pp.~307--326.
+  Steurer, and Yuan Zhou.
+\newblock Hypercontractivity, sum-of-squares proofs, and their applications.
+\newblock In {\em Proceedings of the Forty-fourth Annual ACM Symposium on
+  Theory of Computing}, STOC '12, pages 307--326, New York, NY, USA, 2012. ACM.
+\newblock URL: \url{http://doi.acm.org/10.1145/2213977.2214006}, \href
+  {http://dx.doi.org/10.1145/2213977.2214006}
+  {\path{doi:10.1145/2213977.2214006}}.
 
-\bibitem[BRS11]{barak2011rounding}
-B.~Barak, P.~Raghavendra, and D.~Steurer, \emph{Rounding semidefinite
-  programming hierarchies via global correlation}, Proc.\ FOCS, IEEE, 2011,
-  pp.~472--481.
+\bibitem{Braun:2016:MPN:2884435.2884510}
+G\'{a}bor Braun, Jonah Brown-Cohen, Arefin Huq, Sebastian Pokutta, Prasad
+  Raghavendra, Aurko Roy, Benjamin Weitz, and Daniel Zink.
+\newblock The matching problem has no small symmetric sdp.
+\newblock In {\em Proceedings of the Twenty-seventh Annual ACM-SIAM Symposium
+  on Discrete Algorithms}, SODA '16, pages 1067--1078, Philadelphia, PA, USA,
+  2016. Society for Industrial and Applied Mathematics.
+\newblock URL: \url{http://dl.acm.org/citation.cfm?id=2884435.2884510}.
 
-\bibitem[Fol01]{10.2307/2695802}
-Gerald~B. Folland, \emph{How to integrate a polynomial over a sphere}, The
-  American Mathematical Monthly \textbf{108} (2001), no.~5, 446--448.
+\bibitem{10.2307/2695802}
+Gerald~B. Folland.
+\newblock How to integrate a polynomial over a sphere.
+\newblock {\em The American Mathematical Monthly}, 108(5):446--448, 2001.
+\newblock URL: \url{http://www.jstor.org/stable/2695802}.
 
-\bibitem[Gri01]{Grigoriev2001}
-D.~Grigoriev, \emph{Complexity of positivstellensatz proofs for the knapsack},
-  computational complexity \textbf{10} (2001), no.~2, 139--154.
+\bibitem{Grigoriev2001}
+D.~Grigoriev.
+\newblock Complexity of positivstellensatz proofs for the knapsack.
+\newblock {\em computational complexity}, 10(2):139--154, 2001.
+\newblock URL: \url{http://dx.doi.org/10.1007/s00037-001-8192-0}, \href
+  {http://dx.doi.org/10.1007/s00037-001-8192-0}
+  {\path{doi:10.1007/s00037-001-8192-0}}.
 
-\bibitem[GS11]{GuruswamiS11}
-Venkatesan Guruswami and Ali~Kemal Sinop, \emph{Lasserre hierarchy, higher
-  eigenvalues, and approximation schemes for graph partitioning and quadratic
-  integer programming with {PSD} objectives}, {IEEE} 52nd Annual Symposium on
-  Foundations of Computer Science, {FOCS} 2011, Palm Springs, CA, USA, October
-  22-25, 2011, 2011, pp.~482--491.
+\bibitem{grigoriev2001complexity}
+Dima Grigoriev and Nicolai Vorobjov.
+\newblock Complexity of null-and positivstellensatz proofs.
+\newblock {\em Annals of Pure and Applied Logic}, 113(1-3):153--160, 2001.
 
-\bibitem[GV01]{grigoriev2001complexity}
-Dima Grigoriev and Nicolai Vorobjov, \emph{Complexity of null-and
-  positivstellensatz proofs}, Annals of Pure and Applied Logic \textbf{113}
-  (2001), no.~1-3, 153--160.
+\bibitem{GuruswamiS11}
+Venkatesan Guruswami and Ali~Kemal Sinop.
+\newblock Lasserre hierarchy, higher eigenvalues, and approximation schemes for
+  graph partitioning and quadratic integer programming with {PSD} objectives.
+\newblock In {\em {IEEE} 52nd Annual Symposium on Foundations of Computer
+  Science, {FOCS} 2011, Palm Springs, CA, USA, October 22-25, 2011}, pages
+  482--491, 2011.
+\newblock URL: \url{http://dx.doi.org/10.1109/FOCS.2011.36}, \href
+  {http://dx.doi.org/10.1109/FOCS.2011.36} {\path{doi:10.1109/FOCS.2011.36}}.
 
-\bibitem[Las00]{lasserre2000optimisation}
-Jean~Bernard Lasserre, \emph{Optimisation globale et th{\'e}orie des moments},
-  Comptes Rendus de l'Acad{\'e}mie des Sciences-Series I-Mathematics
-  \textbf{331} (2000), no.~11, 929--934.
+\bibitem{lasserre2001global}
+Jean~B Lasserre.
+\newblock Global optimization with polynomials and the problem of moments.
+\newblock {\em SIAM Journal on Optimization}, 11(3):796--817, 2001.
 
-\bibitem[Las01]{lasserre2001global}
-Jean~B Lasserre, \emph{Global optimization with polynomials and the problem of
-  moments}, SIAM Journal on Optimization \textbf{11} (2001), no.~3, 796--817.
+\bibitem{lasserre2000optimisation}
+Jean~Bernard Lasserre.
+\newblock Optimisation globale et th{\'e}orie des moments.
+\newblock {\em Comptes Rendus de l'Acad{\'e}mie des Sciences-Series
+  I-Mathematics}, 331(11):929--934, 2000.
 
-\bibitem[Lau09]{laurent2009sums}
-Monique Laurent, \emph{Sums of squares, moment matrices and optimization over
-  polynomials}, Emerging applications of algebraic geometry, Springer, 2009,
-  pp.~157--270.
+\bibitem{laurent2009sums}
+Monique Laurent.
+\newblock Sums of squares, moment matrices and optimization over polynomials.
+\newblock In {\em Emerging applications of algebraic geometry}, pages 157--270.
+  Springer, 2009.
 
-\bibitem[Nes00]{nesterov2000squared}
-Yurii Nesterov, \emph{Squared functional systems and optimization problems},
-  High performance optimization, Springer, 2000, pp.~405--440.
+\bibitem{nesterov2000squared}
+Yurii Nesterov.
+\newblock Squared functional systems and optimization problems.
+\newblock In {\em High performance optimization}, pages 405--440. Springer,
+  2000.
 
-\bibitem[Oâ€17]{odonnell17}
-Ryan Oâ€™Donnell, \emph{Sos is not obviously automatizable, even
-  approximately}, Innovations in Theoretical Computer Science (ITCS) (2017).
+\bibitem{odonnell17}
+Ryan ODonnell.
+\newblock Sos is not obviously automatizable, even approximately.
+\newblock {\em Innovations in Theoretical Computer Science (ITCS)}, 2017.
 
-\bibitem[Par00]{parrilo2000structured}
-Pablo~A Parrilo, \emph{Structured semidefinite programs and semialgebraic
-  geometry methods in robustness and optimization}, Ph.D. thesis, California
-  Institute of Technology, 2000.
+\bibitem{parrilo2000structured}
+Pablo~A Parrilo.
+\newblock {\em Structured semidefinite programs and semialgebraic geometry
+  methods in robustness and optimization}.
+\newblock PhD thesis, California Institute of Technology, 2000.
 
-\bibitem[Sho87]{shor1987class}
-Naum~Z Shor, \emph{Class of global minimum bounds of polynomial functions},
-  Cybernetics \textbf{23} (1987), no.~6, 731--734.
+\bibitem{shor1987class}
+Naum~Z Shor.
+\newblock Class of global minimum bounds of polynomial functions.
+\newblock {\em Cybernetics}, 23(6):731--734, 1987.
 
 \end{thebibliography}
