@@ -1,0 +1,80 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{BBCH{\etalchar{+}}16}
+
+\bibitem[BBCH{\etalchar{+}}16]{Braun:2016:MPN:2884435.2884510}
+G\'{a}bor Braun, Jonah Brown-Cohen, Arefin Huq, Sebastian Pokutta, Prasad
+  Raghavendra, Aurko Roy, Benjamin Weitz, and Daniel Zink, \emph{The matching
+  problem has no small symmetric sdp}, Proceedings of the Twenty-seventh Annual
+  ACM-SIAM Symposium on Discrete Algorithms (Philadelphia, PA, USA), SODA '16,
+  Society for Industrial and Applied Mathematics, 2016, pp.~1067--1078.
+
+\bibitem[BBH{\etalchar{+}}12]{BBHKSZ12}
+Boaz Barak, Fernando~G.S.L. Brandao, Aram~W. Harrow, Jonathan Kelner, David
+  Steurer, and Yuan Zhou, \emph{Hypercontractivity, sum-of-squares proofs, and
+  their applications}, Proceedings of the Forty-fourth Annual ACM Symposium on
+  Theory of Computing (New York, NY, USA), STOC '12, ACM, 2012, pp.~307--326.
+
+\bibitem[BRS11]{barak2011rounding}
+B.~Barak, P.~Raghavendra, and D.~Steurer, \emph{Rounding semidefinite
+  programming hierarchies via global correlation}, Proc.\ FOCS, IEEE, 2011,
+  pp.~472--481.
+
+\bibitem[Fol01]{10.2307/2695802}
+Gerald~B. Folland, \emph{How to integrate a polynomial over a sphere}, The
+  American Mathematical Monthly \textbf{108} (2001), no.~5, 446--448.
+
+\bibitem[Gri01]{Grigoriev2001}
+D.~Grigoriev, \emph{Complexity of positivstellensatz proofs for the knapsack},
+  computational complexity \textbf{10} (2001), no.~2, 139--154.
+
+\bibitem[GS11]{GuruswamiS11}
+Venkatesan Guruswami and Ali~Kemal Sinop, \emph{Lasserre hierarchy, higher
+  eigenvalues, and approximation schemes for graph partitioning and quadratic
+  integer programming with {PSD} objectives}, {IEEE} 52nd Annual Symposium on
+  Foundations of Computer Science, {FOCS} 2011, Palm Springs, CA, USA, October
+  22-25, 2011, 2011, pp.~482--491.
+
+\bibitem[GV01]{grigoriev2001complexity}
+Dima Grigoriev and Nicolai Vorobjov, \emph{Complexity of null-and
+  positivstellensatz proofs}, Annals of Pure and Applied Logic \textbf{113}
+  (2001), no.~1-3, 153--160.
+
+\bibitem[Las00]{lasserre2000optimisation}
+Jean~Bernard Lasserre, \emph{Optimisation globale et th{\'e}orie des moments},
+  Comptes Rendus de l'Acad{\'e}mie des Sciences-Series I-Mathematics
+  \textbf{331} (2000), no.~11, 929--934.
+
+\bibitem[Las01]{lasserre2001global}
+Jean~B Lasserre, \emph{Global optimization with polynomials and the problem of
+  moments}, SIAM Journal on Optimization \textbf{11} (2001), no.~3, 796--817.
+
+\bibitem[Lau09]{laurent2009sums}
+Monique Laurent, \emph{Sums of squares, moment matrices and optimization over
+  polynomials}, Emerging applications of algebraic geometry, Springer, 2009,
+  pp.~157--270.
+
+\bibitem[Nes00]{nesterov2000squared}
+Yurii Nesterov, \emph{Squared functional systems and optimization problems},
+  High performance optimization, Springer, 2000, pp.~405--440.
+
+\bibitem[Oâ€17]{odonnell17}
+Ryan Oâ€™Donnell, \emph{Sos is not obviously automatizable, even
+  approximately}, Innovations in Theoretical Computer Science (ITCS) (2017).
+
+\bibitem[Par00]{parrilo2000structured}
+Pablo~A Parrilo, \emph{Structured semidefinite programs and semialgebraic
+  geometry methods in robustness and optimization}, Ph.D. thesis, California
+  Institute of Technology, 2000.
+
+\bibitem[Sho87]{shor1987class}
+Naum~Z Shor, \emph{Class of global minimum bounds of polynomial functions},
+  Cybernetics \textbf{23} (1987), no.~6, 731--734.
+
+\end{thebibliography}
