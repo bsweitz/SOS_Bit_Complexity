@@ -5,9 +5,9 @@ Sum of squares (SoS) proof system is a versatile and powerful approach to certif
 %
 SoS certificates can be shown to underly a vast number of algorithms in combinatorial optimization. 
 %
-On the one hand, SoS certificates hold the promise of yielding algorithms that possibly refute the notorious unique games conjecture \cite{BarakBHMSZ}.  
+On the one hand, SoS certificates hold the promise of yielding algorithms that possibly refute the notorious unique games conjecture \cite{BBHKSZ12, barak2011rounding,GuruswamiS11}.  
 %
-On the other, a flurry of recent works have applied SoS proofs to develop algorithms for problems....  
+On the other hand, a flurry of recent works have applied SoS proofs to develop algorithms for problems ranging from constraint satisfaction problems to tensor problems.  
 
 To illustrate sum of squares certificates, let us consider the example of the
 \textsc{Balanced Separator} problem.  Here we are given a graph $G = (V,E)$ and the goal is to find a balanced cut $(S,\overline{S})$ with the minimum number of crossing edges.
@@ -31,7 +31,9 @@ Notice that for all $x$ satisfying the equalities $\cP$ and the inequalities $\c
 
 The main appeal of SoS certificates for polynomial optimization is that the existence of a degree $d$ SoS certificate can be formulated as the feasibility of a semidefinite program (SDP).
 %
-This is the degree $d$ SoS relaxation that was introduced by Shor \cite{Shor87}, Nesterov \cite{Nes00} and later...
+This is the degree $d$ SoS relaxation first introduced by Shor \cite{shor1987class}, and expanded upon by later works of Nesterov \cite{nesterov2000squared}, Grigoriev and Vorobjov \cite{grigoriev2001complexity}, Lasserre \cite{lasserre2000optimisation,lasserre2001global}  and Parrilo \cite{parrilo2000structured}.
+(see, e.g., \cite{laurent2009sums,} for many more details).
+
 
 The degree $d$ SoS SDP has $n^{O(d)}$ variables, and if the coefficients of $p$ and $q$ are reasonably bounded (smaller than $2^{n^{O(d)}}$), the resulting SDP has a compact description of size $n^{O(d)}$.
 %
