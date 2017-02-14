@@ -1,7 +1,7 @@
 \section{MAX-BISECTION Constraints}\label{sec:balance}
-In this section, we prove our earlier claim that the MAX-BISECTION constraints contain a blocking solution set. Recall the constraints:
-\[\cP(n) = \{x_i^2 - x_i | i \in [2n]\} \cup \{\sum_i x_i - n\}.\]
-This is an interesting example because $\cP$ is not a Grobner basis for its ideal $\langle \cP \rangle$. Indeed, the Grobner basis for this ideal has exponential size. This shows that our framework extends beyond just Grobner bases. Recall that to prove $\cP$ is nice, we have to prove that it is spectrally rich, robust, and complete. Since the solution space lies in the hypercube, it is spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{}, due to the similar symmetry of the constraints. 
+In this section, we prove our earlier claim that the MAX-BISECTION constraints are nice. Recall the constraints:
+\[\cP(n) = \left\{x_i^2 - x_i | i \in [2n]\right\} \cup \left\{\sum_i x_i - n\right\}.\]
+This is an interesting example because as discussed earlier, $\cP$ is not a Gr\"obner basis for its ideal $\langle \cP \rangle$. Indeed, the Gr\"obner basis for this ideal has exponential size. This shows that our framework extends beyond just Gr\"obner bases, which can be intractable to compute. Recall that to prove $\cP$ is nice, we have to prove that it is spectrally rich, robust, and complete. Since the solution space lies in the hypercube, it is spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{}, due to the similar symmetry of the constraints. 
 \begin{lemma}
 $\cP(n)$ is $d$-complete for any $d \leq n$.
 \end{lemma}

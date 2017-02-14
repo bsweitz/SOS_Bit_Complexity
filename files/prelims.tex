@@ -27,18 +27,18 @@ The above proof system is useful for proving when polynomials are zero on $S$, b
 \[r(x) = \sum_{i}^{t_0} h_i^2(x) + \sum_{i}^m \left(\sum_{j}^{t_i} s_j^2(x)\right)q_i(x) + \sum_{i}^n \lambda_i(x) p_i(x).\]
 We say the proof has degree $d$ if $\max \{\deg h_i^2, \deg s_j^2q_i, \deg \lambda_i p\} = d$.
 \end{definition}
-The idea behind this terminology is that if such a proof exists, then $r$ must be non-negative on $S$ since the first two terms are non-negative, and the last term is zero. We will be concerned with not just the degree of these proofs, but also their bit complexity. To this end, we define the following norms on polynomials and proofs: For $p(x) \in \R[x]$, we write $\|p\|$ for the absolute value of the maximum coefficient of $p$ in the standard monomial basis, and for any collection of polynomials $\cP$, we write $\|\cP\| = \max_{p \in \cP} \|p\|$. 
+The idea behind this terminology is that if such a proof exists, then $r$ must be non-negative on $S$ since the first two terms are non-negative, and the last term is zero. We will be concerned with not just the degree of these proofs, but also their bit complexity. To this end, we define the following norms on polynomials and proofs: For $p(x) \in \R[x]$, we write $\|p\|$ for the absolute value of the maximum coefficient of $p$ in the standard monomial basis, and for any collection of polynomials $\cP$, we write $\|\cP\| = \max_{p \in \cP} \|p\|$. We will also require a bound on $\|S\| = \max_{\alpha \in S} \|\alpha\|$. Throughout this paper we will assume that $\|\alpha\| \leq 2^{\poly(n^d)}$, often referred to as the \emph{explicitly bounded} case. 
 
 \subsection{Nice Solution Spaces}
-In this section we define the conditions we require in order to guarantee that SOS proofs from $\cP$ and $\cQ$ have low bit-complexity. We will require the solution space $S$ to have a subset of points that are sufficiently nice. Fix a degree $d$, and let $U \subseteq S$. Define the moment matrix
-\[M \coloneqq E_{\alpha \in U}[{\bf v}(\alpha){\bf v}(\alpha)^T].\]
+In this section we define the conditions we require in order to guarantee that SOS proofs from $\cP$ and $\cQ$ have low bit-complexity. Our goal is to develop easily checkable conditions that suffice to imply that SOS proofs may be taken to lie in a polynomially-bounded region. We will require the constraints to satisfy three properties. Define the moment matrix
+\[M \coloneqq E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T].\]
 \begin{definition}
 Let everything be as above. 
 \begin{itemize}
-\item We say that $U$ is \emph{$\delta$-spectrally rich up to degree $d$} if every nonzero eigenvalue of $M$ is at least $\delta$.
-\item We say that $U$ is \emph{$k$-complete up to degree $d$} if every zero eigenvector $c$ of $M$ (which can be seen as a degree $d$ polynomial $c^T{\bf v}$) has a degree $k$ derivation from $\cP$. 
-\item We say that $U$ is $\epsilon$-robust if $\forall q \in \cQ, \forall \alpha \in S: q(\alpha) > \epsilon$.
+\item We say that $(\cP, \cQ, S)$ is \emph{$\delta$-spectrally rich up to degree $d$} if every nonzero eigenvalue of $M$ is at least $\delta$.
+\item We say that $(\cP, \cQ, S)$ is \emph{$k$-complete up to degree $d$} if every zero eigenvector $c$ of $M$ (which can be seen as a degree $d$ polynomial $c^T{\bf v}$) has a degree $k$ derivation from $\cP$. 
+\item We say that $(\cP, \cQ, S)$ is $\epsilon$-robust if $\forall q \in \cQ, \forall \alpha \in S: q(\alpha) > \epsilon$.
 \end{itemize}
 \end{definition}
-If $U$ is all of the above we will say it is $(\delta, k, \epsilon)$-\emph{nice} up to degree $d$, and if $\delta = O()$, $k = O()$, and $\epsilon = O()$ we will say $U$ is a \emph{blocking solution set}. Our main theorem, which will be proven in \prettyref{sec:main}, is that if $S$ contains a blocking subset, then any SOS proof from $\cP$ and $\cQ$ can be taken to have polynomial bit complexity. Before we get into the proof of the main theorem, we discuss briefly which kinds of polynomial constraints contain blocking solution sets. 
+If the spectral richness condition looks strange, note that it is equivalent to requiring if $p(x)$ is small on $S$, then there is a polynomial $q$ which agrees with $p$ on $S$ and that has small coefficients. If $(\cP, \cQ, S)$ satisfies all three conditions then we say it is $(\delta, k, \epsilon)$-\emph{nice} up to degree $d$. If $1/\delta = 2^{\poly(n^d)}$, $k = O(d)$, and $1/\epsilon = 2^{\poly(n^d)}$ we simply say $(\cP, \cQ, S)$ is nice. We choose these bounds because \prettyref{thm:main} will imply that any constraints with a nice solution space has proofs of non-negativity that can be taken to have polynomial bit complexity. Before we get into the proof of the main theorem, we discuss briefly which kinds of polynomial constraints are nice.
 
