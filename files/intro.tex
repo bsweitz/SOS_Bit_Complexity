@@ -1,2 +1,124 @@
 \section{Introduction}
 \label{sec:intro}
+
+Sum of squares (SoS) proof system is a versatile and powerful approach to certifying polynomial inequalities. 
+%
+SoS certificates can be shown to underly a vast number of algorithms in combinatorial optimization. 
+%
+On the one hand, SoS certificates hold the promise of yielding algorithms that possibly refute the notorious unique games conjecture \cite{BarakBHMSZ}.  
+%
+On the other, a flurry of recent works have applied SoS proofs to develop algorithms for problems....  
+
+To illustrate sum of squares certificates, let us consider the example of the
+\textsc{Balanced Separator} problem.  Here we are given a graph $G = (V,E)$ and the goal is to find a balanced cut $(S,\overline{S})$ with the minimum number of crossing edges.
+%
+Like many problems in combinatorial optimization, it can be reformulated as a low-degree polynomial optimization problem.  
+%
+Specifically if we associate $\{0,1\}$ variables $\{x_1,\ldots,x_n\}$ for the vertices of the graph $G$ then we can rewrite the \textsc{Balanced Separator} problem as follows,
+\begin{align*}
+\text{ Minimize } \ \ \  \sum_{(i,j) \in E} (x_i-x_j)^2  \ \ \ \ \text{ subject to } \left\{ x_i^2 = x_i \forall i\ \ \frac{n}{3} \leq \sum_i x_i \leq \frac{2n}{3} \right\}
+\end{align*} 
+Here the constraint $x_i^2 = x_i$ ensures $x_i \in \{0,1\}$ while the inequalities enforce the condition that the cut is balanced.
+
+More generally, a low-degree polynomial optimization is of the form,
+\begin{align*}
+\text{ Minimize } & r(x)   & \text{ subject to } \text{ equalities } \cP = \left\{ p_i(x) = 0 | i \in [n] \right\} \text{ and inequalities } \cQ = \left\{ q_i(x) \geq 0 | i \in [m] \right\}
+\end{align*} 
+
+A SoS certificate of a lower bound $ r(x) \geq \theta$ is given by a polynomial identity of the form
+\[ r(x) - \theta  = \sum_{i} h_i(x)^2 + \sum_{i \in [m]} \left(\sum_{j}^{t_j} s_j^2(x) \right) \cdot q_j(x) + \sum_{i \in [n]} \lambda_i(x) p_i(x) \]
+Notice that for all $x$ satisfying the equalities $\cP$ and the inequalities $\cQ$, the right hand side of the above identity is manifestly non-negative, thereby certifying that $r(x) \geq \theta$.  The degree of the SoS certificate is the maximum degree of the polynomials involved, i.e., $d = \max\{\deg h_i^2, \deg s_j^2 q_i, \deg \lambda_i p_i\}$.
+
+The main appeal of SoS certificates for polynomial optimization is that the existence of a degree $d$ SoS certificate can be formulated as the feasibility of a semidefinite program (SDP).
+%
+This is the degree $d$ SoS relaxation that was introduced by Shor \cite{Shor87}, Nesterov \cite{Nes00} and later...
+
+The degree $d$ SoS SDP has $n^{O(d)}$ variables, and if the coefficients of $p$ and $q$ are reasonably bounded (smaller than $2^{n^{O(d)}}$), the resulting SDP has a compact description of size $n^{O(d)}$.
+%
+From this, several works including those by the authors, asserted that the resulting feasibility SDP can be solved in time $n^{O(d)}$ using the Ellipsoid algorithm.
+
+In a recent work, O'Donnell \cite{odonnell17} observed that this often repeated claim is far from true.
+%
+Specifically, O'Donnell exhibited systems of polynomial inequalities with bounded coefficients such that only degree $2$ SoS certificates of non-negativity involve coefficients that are doubly exponential in size.
+%
+Thus all SoS certificates need an exponential number of bits to represent and consequently, the ellipsoid algorithm will incur an exponential running time.
+%
+ 
+As pointed out by O'Donnell, the issue at hand here is not just that of additive error in the solution, i.e., the difference between testing feasibility and near-feasibility.  
+%
+Indeed, semidefinite programming via the ellipsoid algorithm can only test feasibility up to a very small additive error.
+%
+However, in a majority of applications of SoS SDP relaxations in combinatorial optimization, the variables in the underlying polynomial system are explictly bounded (also known as Archimedian).
+%
+Specifically, these include constraints such as $\{ x_i^2 \leq 1 | i \leq [n]\}$, which yield explicit bounds on the values of the variables.
+%
+In Archimedian settings, if there is an approximate SoS certificate for $r(x) \geq \theta$, then there exists a proper SoS certificate for a slightly weaker lower bound $r(x) \geq \theta - o(1)$.
+%
+Therefore, additive error incurred in semidefinite programming can often be traded off for a slightly weaker objective value.
+%
+The issue highlighted by O'Donnell is far more serious in that the coefficients of the SoS certificate are too large -- thereby directly affecting the runtime of the ellipsoid algorithm.
+
+On a positive note, O'Donnell shows that a polynomial system whose only constraints are booleanness constraints, $\{x_i^2 = x_i | i \in [n]\}$, always admit SoS certificates with polynomial bit complexity.  
+%
+He proceeds to ask whether all polynomial systems that include boolean constraints among others, always admit bounded SoS certificates.
+
+
+\subsection{Our Results}
+
+In this work, we further explore the issue of bit complexity of SoS proofs, and obtain both positive and negative results.
+%
+
+First, we present an easily verifiable and broadly applicable set of sufficient conditions under which a polynomial optimization problem has small SoS certificates.
+%
+Roughly speaking, we show that polynomial systems with {\it rich} sets of solutions have bounded SoS certificates of non-negativity.
+%
+More precisely, consider a system consisting of polynomial equalities $\cP$ and inequalities $\cQ$.  Our approach consists of looking for assignments $S$ satisfying three criteria (see \prettyref{sec:} for formal statement).  
+\begin{enumerate}
+\item The assignments $S$ robustly satisfy the inequalities in $\cQ$.  
+\item Degree $d$ polynomial calculus proof system is complete over $S$.  In other words, all polynomial identities over $S$ can be derived using a degree $d$ polynomial derivation from the equalities $\cP$.
+\item The assignments $S$ are {\it spectrally rich} in that smallest non-zero eigenvalue of their covariance matrix is at least $\frac{1}{2^{\poly(n)}}$. 
+\end{enumerate}
+We show that if a polynomial system $(\cP,\cQ)$ admits a set of rich assignments $S$, then all SoS proofs of non-negativity from $(\cP, \cQ)$ have polynomially bounded bit complexity. 
+
+We demonstrate the broad applicability of the above set of sufficient conditions by using them to show upper bounds on bit complexity for \textsc{Max-CSP}, \textsc{Max Clique}, \textsc{Matching}, \textsc{Balanced Separator} and optimization over unit sphere.  In each case, the above sufficient conditions can be verified for a very simple and natural choice of set of solutions $S$. 
+%
+
+The above set of sufficient conditions are widely applicable in combinatorial optimization, wherein the polynomial system is typically a relaxation of a well-known set of integer solutions.  
+%
+In such a setup with integer solutions, we observe in \prettyref{sec:whatever} that spectral richness is an immediate consequence of the discrete nature of the set of solutions.
+%
+Therefore, in all these setups, the only non-trivial thing to verify is the completeness of the degree $d$ polynomial calculus proof system.
+%
+
+
+The work of O'Donnell \cite{odonnell17} exhibited a polynomial system with bounded coefficients which admitted degree $2$ SoS certificate, whose coefficients were necessarily doubly-exponential.
+%
+However, the variables in this polynomial system were not all boolean, i.e. did not have the $x_i^2 = x_i$ constraint.
+%
+In fact, O'Donnell asked whether every polynomial system with boolean constraints admits a small SoS proof.
+%
+Moreover, the polynomial system in \cite{odonnell17} admits a degree $4$ SoS certificate with small bit complexity.  
+%
+This opens up the possibility that one can effectively reduce the bit-complexity by raising the degree of the proof.
+%
+For instance, if a system admits a degree $d$ SoS certificate then does it always admit a degree $2^d$ SoS certificate with small bit complexity (even under boolean constraints)?
+Unfortunately, we refute both of the above possibilities by exhibiting a counterexample.
+%
+Formally, we show the following:
+
+\begin{theorem}
+	There exists a system of quadratic equations on $n$ variables such that
+	\begin{itemize}
+	\item There exists a degree $2$ SoS certificate of non-negativity, albeit with doubly exponentially large coefficients.
+	\item No SoS certificate of degree smaller than $\sqrt{n}$ has coefficients smaller than $2^{2^{\sqrt{n}}}$.
+	\end{itemize}	
+\end{theorem}
+
+********** todo
+**** consistent with terminology of nice solutions, 
+**** be consistent with terminology, polynomial system, polynomial inequalities..
+**** check if above theorem statement agrees with final result
+**** mark above theorem as informal, or use theoremrestate 
+
+
+
