@@ -26,10 +26,10 @@ To prove completeness, we typically want to show two things. First, that every d
 
 
 
-\paragraph{\textsc{Max-CSP}: $\cP = \{x_i^2 - x_i | i \in [n]\}$}
+\paragraph*{\textsc{Max-CSP}: $\cP = \{x_i^2 - x_i | i \in [n]\}$}
 	Here $S = \{0,1\}^n$.  Any polynomial $p$ of degree $d$ can be multilinearized one monomial at a time.  Specifically, we can find degree $d$ multilinear $p^*$ such that $p - p^* = 0$ has a degree $d$ derivation from $\cP$.  Furthermore, the multilinear polynomial $p^*$ is zero over $S$ if and only if all its coefficients are zero.  Thus $\cP$ is $d$-complete up to degree $d$ for all $d \in \N$.  
 
-\paragraph{\textsc{Max-Clique}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{x_ix_j | (i,j) \notin E\}$}
+\paragraph*{\textsc{Max-Clique}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{x_ix_j | (i,j) \notin E\}$}
 Here $S$ is the set of all cliques in the graph.  Suppose $p$ is a polynomial that is identically zero over $S$.  Without loss of generality, we may assume $p$ is multilinear, if otherwise we can multilinearize it using $\{ x_i^2 - x_i | i \in [n]\}$.  For a multilinear polynomial $p(x) = \sum_{\alpha \subset [n]} \hat{p}_\alpha x_{\alpha}$, we claim that if $p(x) = 0 \forall x \in S$ then for all cliques $\alpha \subset [n]$, the corresponding coefficient $\hat{p}_\alpha = 0$, i.e., all non-zero coefficients of $p$ are non-cliques.
 %
 Suppose not, then let $\alpha$ be the smallest clique with $\hat{p}_\alpha \neq 0$.  Then, we will have $p( \Ind_{\alpha}) = \hat{p}_\alpha \neq 0$, a contradiction.
@@ -55,7 +55,7 @@ If $\cP$ is a Gr\"obner basis, then every degree $d$ polynomial in $\langle \cP\
 %We dispel this notion in \prettyref{sec:balance} by showing the natural description of the \textsc{Max-Bisection} ideal is $d$-complete, even though its Gr\"obner basis has exponential size. Likewise, in \cite{Braun:2016:MPN:2884435.2884510}, it was proven that the \textsc{Matching} constraints are $2d$-complete, which is another set of constraints that is not a Gr\"obner basis. 
 
 
-\paragraph{\textsc{Balanced Separator}: $\cP = \{x_i^2 - x_i | i \in [n]\}$, $\cQ = \{2n/3 - \sum_i x_i, \sum_i x_i - n/3\}$}
+\paragraph*{\textsc{Balanced Separator}: $\cP = \{x_i^2 - x_i | i \in [n]\}$, $\cQ = \{2n/3 - \sum_i x_i, \sum_i x_i - n/3\}$}
 %Furthermore, if $\cQ$ is pretty simple, it is not too difficult to prove that it does not introduce any additional low degree polynomial equalities. 
 %
 %Here the system is given by
@@ -76,11 +76,11 @@ Therefore the system is $d$-complete up to degree $d$ for $d \leq \frac{n}{3}$.
 %
 The polynomials in $\cQ$ can be perturbed by $1/2$ to make them $1/2$-robust, and thus $S$ is rich for $(\cP, \cQ)$. 
 
-\paragraph{\textsc{Matching}: $\cP = \{x_{ij}^2 - x_{ij} | i,j \in [n]\} \cup \{\sum_i x_{ij} - 1 | i \in [n]\} \cup \{x_{ij}x_{ik} | i,j,k \in [n]\}$} These constraints are $2d$-complete as proven in \cite{Braun:2016:MPN:2884435.2884510}.
+\paragraph*{\textsc{Matching}: $\cP = \{x_{ij}^2 - x_{ij} | i,j \in [n]\} \cup \{\sum_i x_{ij} - 1 | i \in [n]\} \cup \{x_{ij}x_{ik} | i,j,k \in [n]\}$} These constraints are $2d$-complete as proven in \cite{Braun:2016:MPN:2884435.2884510}.
 
-\paragraph{\textsc{Max-Bisection}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}$} We will prove in \prettyref{sec:balance} that these constraints are $d$-complete. The proof will be very similar to the one for \textsc{Matching}, due to the similar symmetry of the constraints.
+\paragraph*{\textsc{Max-Bisection}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}$} We will prove in \prettyref{sec:balance} that these constraints are $d$-complete. The proof will be very similar to the one for \textsc{Matching}, due to the similar symmetry of the constraints.
 
-\paragraph{\textsc{Unit-Vector}: $\cP = \{\sum_i x_i^2 - 1\}$} Here $S = \{x: \|x\| = 1\}$. This constraint appears frequently in tensor norm problems as a way to enforce scaling. Since $\cQ = \emptyset$, it is clearly robust. It may be well-known that $\cP$ is $d$-complete, but we could not find a reference so we record it here for completeness. Let $p(x)$ be any degree $d$ polynomial which is zero on the unit sphere, and define $p_0(x) = p(x) + p(-x)$. Clearly $p_0$ is also zero on the unit sphere, with degree $k = 2\lfloor (d+1)/2 \rfloor$. Note that $p_0$ has only terms of even degree. 
+\paragraph*{\textsc{Unit-Vector}: $\cP = \{\sum_i x_i^2 - 1\}$} Here $S = \{x: \|x\| = 1\}$. This constraint appears frequently in tensor norm problems as a way to enforce scaling. Since $\cQ = \emptyset$, it is clearly robust. It may be well-known that $\cP$ is $d$-complete, but we could not find a reference so we record it here for completeness. Let $p(x)$ be any degree $d$ polynomial which is zero on the unit sphere, and define $p_0(x) = p(x) + p(-x)$. Clearly $p_0$ is also zero on the unit sphere, with degree $k = 2\lfloor (d+1)/2 \rfloor$. Note that $p_0$ has only terms of even degree. 
 %
 Define a sequence of polynomials $\{p_i\}_{i \in \{0,\ldots, k\}}$ as follows.
 Define $q_i$ to be the part of $p_i$ which has degree strictly less than $k$, and let $p_{i+1} = p_i + q_i\cdot(\sum_i x_i^2 - 1)$. Then each $p_i$ is zero on the unit sphere and has no monomials of degree strictly less than $2i$. Thus $p_{k/2}$ is homogeneous of degree $k$. But then $p(tx) = t^kp_k(x) = 0$ for any unit vector $x$ and $t > 0$, and thus $p_k(x)$ must be the zero polynomial. This implies that $p_0$ is a multiple of $\sum_i x_i^2 - 1$. The same logic shows that $p(x) - p(-x)$ is also a multiple of $\sum_i x_i^2 - 1$, and thus so is $p(x)$. Now $\langle \cP\rangle$ is principal, so every degree $d$ polynomial in it has a degree $d$ derivation, so $(\cP, \cQ, S)$ is $d$-complete.
