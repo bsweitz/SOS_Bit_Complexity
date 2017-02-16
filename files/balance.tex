@@ -1,7 +1,8 @@
 \section{\textsc{Max-Bisection} Constraints}\label{sec:balance}
-In this section, we prove our earlier claim that the \textsc{Max-Bisection} constraints are nice. Recall the constraints:
+In this section, we prove our earlier claim that the \textsc{Max-Bisection} constraints admit rich solutions. Recall the constraints:
 \[\cP(n) = \left\{x_i^2 - x_i | i \in [2n]\right\} \cup \left\{\sum_i x_i - n\right\}.\]
-This is an interesting example because as discussed earlier, $\cP$ is not a Gr\"obner basis for its ideal $\langle \cP \rangle$. Indeed, the Gr\"obner basis for this ideal has exponential size. This shows that our framework extends beyond just Gr\"obner bases, which can be intractable to compute. Recall that to prove $\cP$ is nice, we have to prove that it is spectrally rich, robust, and complete. Since the solution space lies in the hypercube, it is spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{Braun:2016:MPN:2884435.2884510}, due to the similar symmetry of the constraints. 
+%
+Recall that to prove $S$ is rich, we have to prove that it is spectrally rich, robust, and complete. Since the solution space lies in the hypercube, it is spectrally rich by \prettyref{lem:integer-rich}, and it is clearly robust since $\cQ$ is empty. It remains to prove that it is complete for some $k$. This proof follows a very similar path to \cite{Braun:2016:MPN:2884435.2884510}, due to the similar symmetry of the constraints. 
 \begin{lemma}
 $\cP(n)$ is $d$-complete for any $d \leq n$.
 \end{lemma}
@@ -25,3 +26,8 @@ Now because $r - \sigma_{ij}r$ evalutes to zero on any boolean string with exact
 where we used the fact that $(x_i + x_j - 1)(x_i - x_j) - (x_i^2 - x_i) + (x_j^2 - x_j) = 0$. The degree of this derivation is at most $d$ because each $\lambda_t$ has degree at most $d-3$, and $\lambda'_t = \lambda_t(x_i - x_j)$, and similarly for $\lambda$. Thus the inductive hypothesis implies that $r - \sigma_{ij}r$ has a degree $d$ derivation, and since transpositions generate the symmetric group, this implies that $r - \frac{1}{(2n)!}\sum_{\sigma \in \cS_n} \sigma r$ has a degree $d$ proof from $\cP(n)$.
 \end{proof}
 
+\begin{remark}
+In this example, $\cP$ is not a Gr\"obner basis for its ideal $\langle \cP \rangle$. 
+%
+Indeed, the Gr\"obner basis for this ideal has exponential size. This is an example where our framework is applicable, even though Gr\"obner bases are intractable to compute. 
+\end{remark}

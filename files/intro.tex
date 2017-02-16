@@ -1,7 +1,7 @@
 \section{Introduction}
 \label{sec:intro}
 
-Sum of squares (SoS) proof system is a versatile and powerful approach to certifying polynomial inequalities. 
+The Sum of squares (SoS) proof system is a versatile and powerful approach to certifying polynomial inequalities. 
 %
 SoS certificates can be shown to underly a vast number of algorithms in combinatorial optimization. 
 %
@@ -16,7 +16,7 @@ Like many problems in combinatorial optimization, it can be reformulated as a lo
 %
 Specifically if we associate $\{0,1\}$ variables $\{x_1,\ldots,x_n\}$ for the vertices of the graph $G$ then we can rewrite the \textsc{Balanced Separator} problem as follows,
 \begin{align*}
-\text{ Minimize } \ \ \  \sum_{(i,j) \in E} (x_i-x_j)^2  \ \ \ \ \text{ subject to } \left\{ x_i^2 = x_i \forall i\ \ \frac{n}{3} \leq \sum_i x_i \leq \frac{2n}{3} \right\}
+\text{ Minimize } \ \ \  \sum_{(i,j) \in E} (x_i-x_j)^2  \ \ \ \ \text{ subject to } \left\{ x_i^2 = x_i \forall i\ , \ \frac{n}{3} \leq \sum_i x_i \leq \frac{2n}{3} \right\}
 \end{align*} 
 Here the constraint $x_i^2 = x_i$ ensures $x_i \in \{0,1\}$ while the inequalities enforce the condition that the cut is balanced. More generally, a low-degree polynomial optimization is of the form
 \begin{align*}
@@ -24,13 +24,13 @@ Here the constraint $x_i^2 = x_i$ ensures $x_i \in \{0,1\}$ while the inequaliti
 \end{align*} 
 
 An SoS certificate of a lower bound $ r(x) \geq \theta$ is given by a polynomial identity of the form
-\[ r(x) - \theta  = \sum_{i} h_i(x)^2 + \sum_{i \in [m]} \left(\sum_{j}^{t_j} s_j^2(x) \right) \cdot q_j(x) + \sum_{i \in [n]} \lambda_i(x) p_i(x) \]
+\[ r(x) - \theta  = \sum_{i} h_i(x)^2 + \sum_{i \in [m]} \left(\sum_{j}^{t_i} s_j^2(x) \right) \cdot q_i(x) + \sum_{i \in [n]} \lambda_i(x) p_i(x) \]
 Notice that for all $x$ satisfying the equalities $\cP$ and the inequalities $\cQ$, the right hand side of the above identity is manifestly non-negative, thereby certifying that $r(x) \geq \theta$.  The degree of the SoS certificate is the maximum degree of the polynomials involved, i.e., $d = \max\{\deg h_i^2, \deg s_j^2 q_i, \deg \lambda_i p_i\}$.
 
 The main appeal of SoS certificates for polynomial optimization is that the existence of a degree $d$ SoS certificate can be formulated as the feasibility of a semidefinite program (SDP).
 %
 This is the degree $d$ SoS relaxation first introduced by Shor \cite{shor1987class}, and expanded upon by later works of Nesterov \cite{nesterov2000squared}, Grigoriev and Vorobjov \cite{grigoriev2001complexity}, Lasserre \cite{lasserre2000optimisation,lasserre2001global}  and Parrilo \cite{parrilo2000structured}.
-(see, e.g., \cite{laurent2009sums,} for many more details).
+(see, e.g., \cite{laurent2009sums,barak2014sum} for many more details).
 
 
 The degree $d$ SoS SDP has $n^{O(d)}$ variables, and if the coefficients of $p$ and $q$ are reasonably bounded (smaller than $2^{n^{O(d)}}$), the resulting SDP has a compact description of size $n^{O(d)}$.
@@ -72,7 +72,7 @@ First, we present an easily verifiable and broadly applicable set of sufficient 
 %
 Roughly speaking, we show that polynomial systems with {\it rich} sets of solutions have bounded SoS certificates of non-negativity.
 %
-More precisely, consider a system consisting of polynomial equalities $\cP$ and inequalities $\cQ$.  Our approach consists of looking for assignments $S$ satisfying three criteria (see \prettyref{def:nice} and \prettyref{thm:main} for formal statements).  
+Consider a system consisting of polynomial equalities $\cP$ and inequalities $\cQ$.  Our approach consists of looking for assignments $S$ satisfying three criteria (see \prettyref{def:nice} and \prettyref{thm:main} for formal statements).  
 \begin{theorem}
 Assume $(\cP, \cQ, S)$ satisfies:
 \begin{enumerate}
@@ -118,12 +118,9 @@ Formally, we show the following:
 	\end{itemize}	
 \end{theorem}
 
-********** todo
-**** consistent with terminology of nice solutions, 
-**** be consistent with terminology, polynomial system, polynomial inequalities..
-**** check if above theorem statement agrees with final result
-**** mark above theorem as informal, or use theoremrestate 
-**** Broken References
-
-
-
+%********** todo
+%**** consistent with terminology of nice solutions, 
+%**** be consistent with terminology, polynomial system, polynomial inequalities..
+%**** check if above theorem statement agrees with final result
+%**** mark above theorem as informal, or use theoremrestate 
+%**** Broken References
