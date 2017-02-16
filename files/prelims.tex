@@ -17,7 +17,7 @@ For a set of real polynomials $\cP = \{p_1, p_2, \dots, p_m\}$, we denote their 
 Let $\cP = \{p_1,\dots,p_n\}$ be a set of polynomials, and let $S = \{x \in \R^n | \forall p \in \cP: p(x) = 0\}$. We define a proof of membership in $\langle \cP\rangle$ as follows:
 \begin{definition}
 We say that $r(x)$ has a \emph{derivation} from $\cP$ if there is a polynomial identity of the form
-\[r(x) = \sum_{i}^n \lambda_i p_i(x).\]
+\[r(x) = \sum_{i}^n \lambda_i(x) p_i(x).\]
 We say that the proof has degree $d$ if $\max_i \{\deg \lambda_i p_i\} = d$.
 \end{definition}
 
@@ -41,10 +41,10 @@ where the expectation is over the uniform distribution over $S$.  We will omit t
 \begin{definition}\label{def:nice}
 With the above definitions, 
 \begin{itemize}
-\item We say that $(\cP, \cQ, S)$ is \emph{$\delta$-spectrally rich up to degree $d$} if every nonzero eigenvalue of $M_S$ is at least $\delta$.
-\item We say that $(\cP, \cQ, S)$ is \emph{$k$-complete up to degree $d$} if every zero eigenvector $c$ of $M_S$ (which can be seen as a degree $d$ polynomial $c^T{\bf v}$) has a degree $k$ derivation from $\cP$. 
-\item We say that $(\cP, \cQ, S)$ is $\epsilon$-robust if $\forall q \in \cQ, \forall \alpha \in S: q(\alpha) > \epsilon$.
+\item We say that $S$ is \emph{$\delta$-spectrally rich for $(\cP, \cQ)$ up to degree $d$} if every nonzero eigenvalue of $M_S$ is at least $\delta$.
+\item We say that $(\cP, \cQ)$ is \emph{$k$-complete on $S$ up to degree $d$} if every zero eigenvector $c$ of $M_S$ (which can be seen as a degree $d$ polynomial $c^T{\bf v}$) has a degree $k$ derivation from $\cP$. 
+\item We say that $S$ is \emph{$\epsilon$-robust for $\cQ$} if $\forall q \in \cQ, \forall \alpha \in S: q(\alpha) > \epsilon$.
 \end{itemize}
 \end{definition}
-Spectral richness of the solutions $S$ is equivalent to requiring if $p(x)$ is small on $S$, then there is a polynomial $q$ which agrees with $p$ on $S$ and that has small coefficients. If $(\cP, \cQ, S)$ satisfies all three conditions then we say it is $(\delta, k, \epsilon)$-\emph{rich} up to degree $d$. If $1/\delta = 2^{\poly(n^d)}$, $k = O(d)$, and $1/\epsilon = 2^{\poly(n^d)}$ we simply say $(\cP, \cQ, S)$ is rich. We choose these bounds because \prettyref{thm:main} will imply that any constraints with a rich solution space has proofs of non-negativity that can be taken to have polynomial bit complexity. Before we get into the proof of the main theorem, we exhibit polynomial systems that admit rich solutions.
+Spectral richness of the solutions $S$ is equivalent to requiring if $p(x)$ is small on $S$, then there is a polynomial $q$ which agrees with $p$ on $S$ and that has small coefficients. If $(\cP, \cQ, S)$ satisfies all three conditions then we say that $S$ is $(\delta, k, \epsilon)$-\emph{rich} for $(\cP, \cQ)$ up to degree $d$. If $1/\delta = 2^{\poly(n^d)}$, $k = O(d)$, and $1/\epsilon = 2^{\poly(n^d)}$ we simply say $S$ is rich for $(\cP, \cQ)$. We choose these bounds because \prettyref{thm:main} will imply that any constraints with a rich solution space has proofs of non-negativity that can be taken to have polynomial bit complexity. Before we get into the proof of the main theorem, we exhibit polynomial systems that admit rich solutions.
 

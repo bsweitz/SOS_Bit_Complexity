@@ -1,8 +1,6 @@
 \section{Examples with Rich Solution Spaces}
 \label{sec:nicespaces}
-In this section we present examples of polynomial systems that admit rich solution spaces.
-\subsection{Solution Spaces in the Boolean Hypercube}
-First, we consider the case $S \subseteq \{0,1\}^n$. In this case, it is relatively simple to prove spectral richness.  In this case, the spectral richness is a consequence of the following easy observation.
+In this section we present examples of polynomial systems that admit rich solution spaces. First, we consider the case $S \subseteq \{0,1\}^n$. In this case, the spectral richness is a consequence of the following easy observation.
 \begin{lemma} \label{lem:integer}
 	Let $M \in \R^{N \times N}$ be an integer matrix with $|M_{ij}| \leq B$ for all $i,j \in [N]$.  The smallest non-zero eigenvalue of $M$ is at least 
 	$(BN)^{-N}$.
@@ -10,10 +8,10 @@ First, we consider the case $S \subseteq \{0,1\}^n$. In this case, it is relativ
 \begin{proof}
 Let $A$ be a full-rank principal minor of $M$ and w.l.o.g. let it be at the upper-left block of $M$. We claim the least eigenvalue of $A$ lower bounds the least nonzero eigenvalue of $M$.
 %
-Since $M$ is symmetric, there must be a $B$ such that
-\[M = \left[\begin{tabular}{c} $I$ \\ $B$\end{tabular}\right]A\left[\begin{tabular}{cc} $I$ & $B^T$\end{tabular}\right].\]
-Let $P = [I, B^T]$, $\rho$ be the least eigenvalue of $A$, and $x$ be a vector perpendicular to the zero eigenspace of $A$. Then we have $x^TMx \geq \rho x^TP^TPx$,
-but $x$ is also perpendicular to the zero eigenspace of $P^TP$. Now $P^TP$ has the same nonzero eigenvalues as $PP^T = I + B^TB \succeq I$, and thus $x^TP^TPx \geq 1$, and so every nonzero eigenvalue of $A$ is at least $\rho$. Now $A$ is a full-rank bounded integer matrix with dimension at most $N$. The magnitude of its determinant is at least $1$ and all eigenvalues are at most $N \cdot B$.  Therefore, its least eigenvalue must be at least $(NB)^{-N}$ in magnitude. 
+Since $M$ is symmetric, there must be a $C$ such that
+\[M = \left[\begin{tabular}{c} $I$ \\ $C$\end{tabular}\right]A\left[\begin{tabular}{cc} $I$ & $C^T$\end{tabular}\right].\]
+Let $P = [I, C^T]$, $\rho$ be the least eigenvalue of $A$, and $x$ be a vector perpendicular to the zero eigenspace of $A$. Then we have $x^TMx \geq \rho x^TP^TPx$,
+but $x$ is also perpendicular to the zero eigenspace of $P^TP$. Now $P^TP$ has the same nonzero eigenvalues as $PP^T = I + C^TC \succeq I$, and thus $x^TP^TPx \geq 1$, and so every nonzero eigenvalue of $A$ is at least $\rho$. Now $A$ is a full-rank bounded integer matrix with dimension at most $N$. The magnitude of its determinant is at least $1$ and all eigenvalues are at most $N \cdot B$.  Therefore, its least eigenvalue must be at least $(BN)^{-N}$ in magnitude. 
 \end{proof}
 
 
@@ -39,9 +37,9 @@ Suppose not, then let $\alpha$ be the smallest clique with $\hat{p}_\alpha \neq 
 Since all coefficients of $p$ are non-cliques, each monomial in $p$ can be eliminated using an appropriate polynomial from $\{ x_i x_j | (i,j) \notin E\}$.
 
 \begin{remark}
-	More generally, the above two cases are special cases of the following general setup: $\cQ$ is empty, and $\cP$ is a Gr\"obner basis. A Gr\"obner basis for an ideal is a generating set of polynomials that allow a well-defined multivariate polynomial division (see \cite{Grobner} for a description). Computing the Gr\"obner basis is frequently the first step in practical polynomial equation solvers, and we note the following easy lemma:
+	More generally, the above two cases are special cases of the following general setup: $\cQ$ is empty, and $\cP$ is a Gr\"obner basis. A Gr\"obner basis for an ideal is a generating set of polynomials that allow a well-defined multivariate polynomial division (see \cite{Grobner} for more information). Computing the Gr\"obner basis is often the first step in practical polynomial equation solvers, and we note the following easy lemma:
 \begin{lemma}\label{lem:grobner}
-If $\cQ = \emptyset$ and $\cP$ is a Grobner basis for $\langle \cP\rangle$, then $S$ is $d$-complete up to degree $d$. 
+If $\cQ = \emptyset$ and $\cP$ is a Gr\"obner basis for $\langle \cP\rangle$, then $S$ is $d$-complete up to degree $d$. 
 \end{lemma}
 \begin{proof}
 If $\cP$ is a Gr\"obner basis, then every degree $d$ polynomial in $\langle \cP\rangle$ has a degree $d$ derivation via multivariate division. Because $\cQ = \emptyset$, the polynomials that are zero on $S$ are exactly the polynomials in $\langle \cP\rangle$. 
@@ -76,22 +74,19 @@ Therefore the system is $d$-complete up to degree $d$ for $d \leq \frac{n}{3}$.
 %Moreover, eve 
 %Further, $\cP$ is a Gr\"obner basis, so $(\cP, \cQ, S)$ is $d$-complete as long as $d < n/3$. 
 %
-The polynomials in $\cQ$ can be perturbed by $1/2$ to make them $1/2$-robust, so that $S$ is rich with respect to $(\cP, \cQ)$ is rich. 
+The polynomials in $\cQ$ can be perturbed by $1/2$ to make them $1/2$-robust, and thus $S$ is rich for $(\cP, \cQ)$. 
 
+\paragraph{\textsc{Matching}: $\cP = \{x_{ij}^2 - x_{ij} | i,j \in [n]\} \cup \{\sum_i x_{ij} - 1 | i \in [n]\} \cup \{x_{ij}x_{ik} | i,j,k \in [n]\}$} These constraints are $2d$-complete as proven in \cite{Braun:2016:MPN:2884435.2884510}.
 
-\paragraph{\textsc{Unit-Vector}: $\cP = \{\sum_i x_i^2 - 1\}$}
-Let $\cP = \{\sum_i x_i^2 - 1\}$, $\cQ = \emptyset$, and thus $S = \{x: \|x\| = 1\}$. This constraint appears frequently in tensor norm problems as a way to enforce scaling. The following is an easy lemma:
-\begin{lemma}
-Let $(\cP, \cQ, S)$ be as above. Then $S$ is a rich set of solutions for $(\cP,\cQ)$. 
-\end{lemma}
-\begin{proof}
-Since $\cQ = \emptyset$, it is clearly robust. It may be well-known that $\cP$ is $d$-complete, but we could not find a reference so we record it here for completeness. Let $p(x)$ be any degree $d$ polynomial which is zero on the unit sphere, and define $p_0(x) = p(x) + p(-x)$. Clearly $p_0$ is also zero on the unit sphere, with degree $k = 2\lfloor (d+1)/2 \rfloor$. Note that $p_0$ has only terms of even degree. 
+\paragraph{\textsc{Max-Bisection}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}$} We will prove in \prettyref{sec:balance} that these constraints are $d$-complete. The proof will be very similar to the one for \textsc{Matching}, due to the similar symmetry of the constraints.
+
+\paragraph{\textsc{Unit-Vector}: $\cP = \{\sum_i x_i^2 - 1\}$} Here $S = \{x: \|x\| = 1\}$. This constraint appears frequently in tensor norm problems as a way to enforce scaling. Since $\cQ = \emptyset$, it is clearly robust. It may be well-known that $\cP$ is $d$-complete, but we could not find a reference so we record it here for completeness. Let $p(x)$ be any degree $d$ polynomial which is zero on the unit sphere, and define $p_0(x) = p(x) + p(-x)$. Clearly $p_0$ is also zero on the unit sphere, with degree $k = 2\lfloor (d+1)/2 \rfloor$. Note that $p_0$ has only terms of even degree. 
 %
 Define a sequence of polynomials $\{p_i\}_{i \in \{0,\ldots, k\}}$ as follows.
 Define $q_i$ to be the part of $p_i$ which has degree strictly less than $k$, and let $p_{i+1} = p_i + q_i\cdot(\sum_i x_i^2 - 1)$. Then each $p_i$ is zero on the unit sphere and has no monomials of degree strictly less than $2i$. Thus $p_{k/2}$ is homogeneous of degree $k$. But then $p(tx) = t^kp_k(x) = 0$ for any unit vector $x$ and $t > 0$, and thus $p_k(x)$ must be the zero polynomial. This implies that $p_0$ is a multiple of $\sum_i x_i^2 - 1$. The same logic shows that $p(x) - p(-x)$ is also a multiple of $\sum_i x_i^2 - 1$, and thus so is $p(x)$. Now $\langle \cP\rangle$ is principal, so every degree $d$ polynomial in it has a degree $d$ derivation, so $(\cP, \cQ, S)$ is $d$-complete.
 
-To prove spectral-richness, we note that in \cite{10.2307/2695802} the author gives an exact formula for each entry of the matrix $M = \int_{S} p(x)$ for any polynomial $p$. The formulas imply that $(n+d)!\pi^{-n/2} M$ is an integer matrix with entries (very loosely) bounded by $(n+d)!d!2^n$. By \prettyref{lem:integer}, we conclude that $(\cP, \cQ, S)$ is $\delta$-spectrally rich with $1/\delta = 2^{\poly(n^d)}$.
-\end{proof}
+To prove spectral-richness, we note that in \cite{10.2307/2695802} the author gives an exact formula for each entry of the matrix $M = \int_{S} p(x)$ for any polynomial $p$. The formulas imply that $(n+d)!\pi^{-n/2} M$ is an integer matrix with entries (very loosely) bounded by $(n+d)!d!2^n$. By \prettyref{lem:integer}, we conclude that $S$ is $\delta$-spectrally rich with $1/\delta = 2^{\poly(n^d)}$.
+
 
 We collect the examples discussed in this section here:
 \begin{corollary}\label{cor:examples}
@@ -100,8 +95,8 @@ The following constraints admit rich solutions:
 \item \textsc{Max-CSP}: $\cP = \{x_i^2 - x_i | i \in [n]\}$. 
 \item \textsc{Max-Clique}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{x_ix_j | (i,j) \notin E\}$.
 \item \textsc{Balanced Separator}: $\cP = \{x_i^2 - x_i | i \in [n]\}$, $\cQ = \{2n/3 - \sum_i x_i, \sum_i x_i - n/3\}$.
-\item \textsc{Max-Bisection}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}$.
 \item \textsc{Matching}: $\cP = \{x_{ij}^2 - x_{ij} | i,j \in [n]\} \cup \{\sum_i x_{ij} - 1 | i \in [n]\} \cup \{x_{ij}x_{ik} | i,j,k \in [n]\}$.
+\item \textsc{Max-Bisection}: $\cP = \{x_i^2 - x_i | i \in [n]\} \cup \{\sum_i x_i - n/2\}$.
 \item \textsc{Unit-Vector}: $\cP = \{\sum_i x_i^2 - 1\}$.
 \end{itemize}
 \end{corollary}

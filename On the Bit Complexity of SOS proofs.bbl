@@ -8,6 +8,10 @@
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{BBCH{\etalchar{+}}16}
 
+\bibitem[AL94]{Grobner}
+William Adams and Philippe Loustaunau, \emph{An introduction to gr\"obner
+  bases}, American Mathematical Society, 1994.
+
 \bibitem[BBCH{\etalchar{+}}16]{Braun:2016:MPN:2884435.2884510}
 G\'{a}bor Braun, Jonah Brown-Cohen, Arefin Huq, Sebastian Pokutta, Prasad
   Raghavendra, Aurko Roy, Benjamin Weitz, and Daniel Zink, \emph{The matching
@@ -25,6 +29,11 @@ Boaz Barak, Fernando~G.S.L. Brandao, Aram~W. Harrow, Jonathan Kelner, David
 B.~Barak, P.~Raghavendra, and D.~Steurer, \emph{Rounding semidefinite
   programming hierarchies via global correlation}, Proc.\ FOCS, IEEE, 2011,
   pp.~472--481.
+
+\bibitem[BS14]{barak2014sum}
+Boaz Barak and David Steurer, \emph{Sum-of-squares proofs and the quest toward
+  optimal algorithms}, In Proceedings of the 2014 International Congress of
+  Mathematicians. International Mathematical Union (2014).
 
 \bibitem[Fol01]{10.2307/2695802}
 Gerald~B. Folland, \emph{How to integrate a polynomial over a sphere}, The
