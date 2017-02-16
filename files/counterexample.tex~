@@ -29,7 +29,7 @@ apply $\phi$ to both sides. We obtain $-\epsilon \leq P + 0 + \phi[\lambda y_n^2
 
 To show that such a $\phi$ exists, we define it as follows. By the constraints, every monomial is equivalent to some power of $y_1$. For example, $y_1y_2y_3 \equiv y_1^7$.  More generally, the constraints imply that $\prod_{i = 1}^n y_i^{\beta_i} = y_1^{\sum_{j = 1}^n 2^{j-1} \beta_j}$.  Define $\phi$ by,
 
-\[\phi\left( \prod_{i = 1}^n y_i^{\beta_i}\right) = (2\epsilon)^{\sum_{i} 2^{i-1} \beta_i } \]
+\[\phi( \prod_{i = 1}^n y_i^{\beta_i}) = (2\epsilon)^{\sum_{i} 2^{i-1} \beta_i } \]
 
 One can easily check that this $\phi$ satisfies the above. Note that none of the variables $y_i$ in the above system are boolean, which we achieve in the upcoming section.
  

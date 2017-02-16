@@ -39,7 +39,7 @@ Suppose not, then let $\alpha$ be the smallest clique with $\hat{p}_\alpha \neq 
 Since all coefficients of $p$ are non-cliques, each monomial in $p$ can be eliminated using an appropriate polynomial from $\{ x_i x_j | (i,j) \notin E\}$.
 
 \begin{remark}
-	More generally, the above two cases are special cases of the following general setup: $\cQ$ is empty, and $\cP$ is a Gr\"obner basis. A Gr\"obner basis for an ideal is a generating set of polynomials that allow a well-defined multivariate polynomial division (see \cite{Grobner} for a description). Computing the Gr\"obner basis is frequently the first step in practical polynomial equation solvers, and we note the following easy lemma:
+	More generally, the above two cases are special cases of the following general setup: $\cQ$ is empty, and $\cP$ is a Gr\"obner basis. A Gr\"obner basis for an ideal is a generating set of polynomials that allow a well-defined multivariate polynomial division (see \cite{Grobner} for definitions). Computing the Gr\"obner basis is frequently the first step in practical polynomial equation solvers, and we note the following easy lemma:
 \begin{lemma}\label{lem:grobner}
 If $\cQ = \emptyset$ and $\cP$ is a Grobner basis for $\langle \cP\rangle$, then $S$ is $d$-complete up to degree $d$. 
 \end{lemma}

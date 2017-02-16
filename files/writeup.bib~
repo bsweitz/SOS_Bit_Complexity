@@ -77,13 +77,6 @@ Mathematical Union},
    year={2017}
 }
 
-@article{barak2014sum,
-  title={Sum-of-squares proofs and the quest toward optimal algorithms},
-  author={Barak, Boaz and Steurer, David},
-  journal={arXiv preprint arXiv:1404.5236},
-  year={2014}
-}
-
 
 @incollection{laurent2009sums,
   title={Sums of squares, moment matrices and optimization over polynomials},
