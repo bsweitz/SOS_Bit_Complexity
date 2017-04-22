@@ -17,7 +17,7 @@ First, we rewrite the proof into a more convenient form before proving bounds on
 \end{align*}
 for PSD matrices $C$, $D_1,\dots,D_\ell$. Next, we average this polynomial identity over all the points $\alpha \in S$:
 \begin{align*}
-E_{\alpha \in S}[r(\alpha)] &= \langle C, E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]\rangle + \sum_{i=1}^\ell \langle D_i, E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]\rangle q_i(\alpha) + 0 \\
+\E_{\alpha \in S}[r(\alpha)] &= \langle C, \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]\rangle + \sum_{i=1}^\ell \langle D_i, \E_{\alpha \in S}[q_i(\alpha){\bf v}(\alpha){\bf v}(\alpha)^T]\rangle + 0 \\
 \end{align*}
 The LHS is at most $\poly(\|r\|, \|S\|)$, and the RHS is a sum of positive numbers, so the LHS is a bound on each term of the RHS. 
 %
@@ -25,7 +25,7 @@ We would like to say that since $S$ is $\delta$-spectrally rich, the first term 
 %
 Unfortunately the averaged matrix may have zero eigenvectors, and it is possible that $C$ could have very large eigenvalues in these directions. 
 %
-However these eigenvectors must correspond to polynomials that are zero on $S$. Because $(\cP, \cQ, S)$ is complete, these can be absorbed into the final term. More formally, let $\Pi = \sum_u uu^T$ be the projector onto the zero eigenspace of $M = E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]$. Because $(\cP, \cQ, S)$ is complete, for each $u$ we have a degree $k$ derivation $u^T{\bf v} = \sum_i \sigma_{ui} p_i$. Then $\Pi {\bf v}{\bf v}^T = \sum_u (u^T{\bf v}) u{\bf v}^T$. Thus we can write
+However these eigenvectors must correspond to polynomials that are zero on $S$. Because $(\cP, \cQ, S)$ is complete, these can be absorbed into the final term. More formally, let $\Pi = \sum_u uu^T$ be the projector onto the zero eigenspace of $M = \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]$. Because $(\cP, \cQ, S)$ is complete, for each $u$ we have a degree $k$ derivation $u^T{\bf v} = \sum_i \sigma_{ui} p_i$. Then $\Pi {\bf v}{\bf v}^T = \sum_u (u^T{\bf v}) u{\bf v}^T$. Thus we can write
 \begin{align*}
 \langle C, {\bf v}{\bf v}^T\rangle &= \langle C, (\Pi + \Pi^\perp){\bf v}{\bf v}^T(\Pi + \Pi^\perp)\rangle \\
 &= \langle C, \Pi^\perp {\bf v}{\bf v}^T \Pi^\perp\rangle + \sum_u u^T{\bf v}\left(\langle C, \Pi^\perp {\bf v}u^T + {\bf v}u^T\Pi^\perp + {\bf v}u^T\Pi\rangle\right) \\
@@ -33,9 +33,12 @@ However these eigenvectors must correspond to polynomials that are zero on $S$. 
 \end{align*}
 Doing the same for the other terms and setting $C' = \Pi^\perp C \Pi^\perp$ and similarly for $D_i'$, we get a new proof:
 \[r(x) = \langle C', {\bf v}{\bf v}^T\rangle + \sum_{i=1}^\ell \langle D_i', {\bf v}{\bf v}^T\rangle q_i + \sum_{i=1}^m \lambda_i' p_i.\]
-Now after averaging over $S$, the zero eigenspace of $C'$ is contained in the zero eigenspace of $M$. Taken with the $\delta$-spectral richness, we have
-\[\poly(\|r\|,\|S\|) \geq \delta Tr(C) + \sum_{i=1}^\ell \delta Tr(D_i') q_i(\alpha).\]
-Because each $q_i(\alpha) \geq \epsilon$, we get $C'$ and $D_i'$ have entries bounded by $\poly(\|r\|, \|S\|, \frac{1}{\delta}, \frac{1}{\epsilon})$.
+Now after averaging over $S$, the zero eigenspaces of $C'$ and each $D'_i$ are contained in the zero eigenspace of $M$. Furthermore, $\epsilon$-robustness implies, for each $i$,
+\[\langle D_i', \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^Tq_i(\alpha)] \rangle \geq \epsilon\langle D_i', \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]\rangle\]
+
+Taken with the $\delta$-spectral richness, we have
+\[\poly(\|r\|,\|S\|) \geq \delta Tr(C') + \sum_{i=1}^\ell \epsilon\delta Tr(D_i').\]
+The Frobenius norm of any PSD matrix is bounded by its trace, so we conclude that $C'$ and each $D_i'$ have entries bounded by $\poly(\|r\|, \|S\|, \frac{1}{\delta}, \frac{1}{\epsilon})$.
 
 The only thing left to do is to bound the coefficients $\lambda_i'$, but this is easy because the SoS proof is linear in these coefficients. If we imagine the coefficients of the $\lambda_i'$ as variables, then the linear system induced by the polynomial identity
 \[r(x) - \langle C', {\bf v}{\bf v}^T\rangle - \sum_{i=1}^\ell \langle D_i', {\bf v}{\bf v}^T\rangle = \sum_{i=1}^m \lambda_i' p_i\]

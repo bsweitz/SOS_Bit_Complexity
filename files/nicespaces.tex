@@ -2,16 +2,16 @@
 \label{sec:nicespaces}
 In this section we present examples of polynomial systems that admit rich solution spaces. First, we consider the case $S \subseteq \{0,1\}^n$. In this case, the spectral richness is a consequence of the following easy observation.
 \begin{lemma} \label{lem:integer}
-	Let $M \in \R^{N \times N}$ be an integer matrix with $|M_{ij}| \leq B$ for all $i,j \in [N]$.  The smallest non-zero eigenvalue of $M$ is at least 
+	Let $M \in \psd{N}$ be an integer matrix with $|M_{ij}| \leq B$ for all $i,j \in [N]$.  The smallest non-zero eigenvalue of $M$ is at least 
 	$(BN)^{-N}$.
 \end{lemma}
 \begin{proof}
-Let $A$ be a full-rank principal minor of $M$ and w.l.o.g. let it be at the upper-left block of $M$. We claim the least eigenvalue of $A$ lower bounds the least nonzero eigenvalue of $M$.
+Let $A$ be a full-rank principal minor of $M$ (which must exist because $M$ is PSD and has a Cholesky decomposition), and for convenience let it be at the upper-left block of $M$ (by permuting rows and columns if necessary). We claim the least eigenvalue of $A$ lower bounds the least nonzero eigenvalue of $M$.
 %
 Since $M$ is symmetric, there must be a $C$ such that
 \[M = \left[\begin{tabular}{c} $I$ \\ $C$\end{tabular}\right]A\left[\begin{tabular}{cc} $I$ & $C^T$\end{tabular}\right].\]
-Let $P = [I, C^T]$, $\rho$ be the least eigenvalue of $A$, and $x$ be a vector perpendicular to the zero eigenspace of $A$. Then we have $x^TMx \geq \rho x^TP^TPx$,
-but $x$ is also perpendicular to the zero eigenspace of $P^TP$. Now $P^TP$ has the same nonzero eigenvalues as $PP^T = I + C^TC \succeq I$, and thus $x^TP^TPx \geq 1$, and so every nonzero eigenvalue of $A$ is at least $\rho$. Now $A$ is a full-rank bounded integer matrix with dimension at most $N$. The magnitude of its determinant is at least $1$ and all eigenvalues are at most $N \cdot B$.  Therefore, its least eigenvalue must be at least $(BN)^{-N}$ in magnitude. 
+Let $P = [I, C^T]$, $\rho$ be the least eigenvalue of $A$, and $x$ be a unit vector perpendicular to the zero eigenspace of $M$. Then we have $x^TMx = (Px)^TA(Px) \geq \rho x^TP^TPx$.
+Now $P^TP$ has the same nonzero eigenvalues as $PP^T = I + C^TC \succeq I$, and the zero eigenspace of $P^TP$ is the same as the zero eigenspace of $M$. Because $x$ is perpindicular to the zero eigenspace, $x^TP^TPx \geq 1$, and so every nonzero eigenvalue of $M$ is at least $\rho$. Now $A$ is a full-rank bounded integer matrix with dimension at most $N$. The magnitude of its determinant is at least $1$ and all eigenvalues are at most $N \cdot B$.  Therefore, its least eigenvalue must be at least $(BN)^{-N}$ in magnitude. 
 \end{proof}
 
 
