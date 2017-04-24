@@ -19,7 +19,7 @@ Now $P^TP$ has the same nonzero eigenvalues as $PP^T = I + C^TC \succeq I$, and 
 Let $\cP$ and $\cQ$ be such that $S \subseteq \{0,1\}^n$. Then $S$ is $\delta$-spectrally rich with $\frac{1}{\delta} = 2^{\poly(n^d)}$.
 \end{lemma}
 \begin{proof}
-	Recall $M = E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]$, and note that $|S| \cdot M$ is an integer matrix with entries at most $2^n$.  The proof follows by applying \prettyref{lem:integer}. 
+	Recall $M = E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]$, and note that $|S| \cdot M$ is an integer $O(n^d) \times O(n^d)$ matrix with entries at most $2^n$.  The proof follows by applying \prettyref{lem:integer}. 
 \end{proof}
 
 To prove completeness, we typically want to show two things. First, that every degree $d$ polynomial in $\langle \cP\rangle$ has a degree at most $k$ derivation. Second, that there are no polynomials outside $\langle \cP\rangle$ that are zero on $S$. This second condition can be thought of as saying that the set of equations $\cP$ is somehow maximal, i.e., if there are extra polynomial equalities implied by $\cQ$, they should be included in $\cP$.  Here we consider a few examples. 

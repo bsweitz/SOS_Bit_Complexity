@@ -4,7 +4,7 @@
 In this section we prove our main theorem:
 
 \begin{theorem}\label{thm:main}
-Let $\cP = \{p_1,\dots,p_m\}$ and $\cQ = \{q_1, \dots, q_\ell\}$ be sets of polynomials with $S = \{\alpha \in \R^n | \forall p \in \cP: p(\alpha) = 0, \forall q \in \cQ: q(\alpha) \geq 0\}$. Assume that the set of solutions $S$ is $(k,\delta,\epsilon)$-rich for $(\cP,\cQ)$.
+Let $\cP = \{p_1,\dots,p_m\}$ and $\cQ = \{q_1, \dots, q_\ell\}$ be sets of polynomials with $S \subseteq \{\alpha \in \R^n | \forall p \in \cP: p(\alpha) = 0\}$. Assume that the set $S$ is $(k,\delta,\epsilon)$-rich for $(\cP,\cQ)$.
 
 Let $r(x)$ be a polynomial nonnegative on $S$, and assume $r$ has a degree $d$ sum-of-squares proof of nonnegativity 
 \[r(x) = \sum_{i=1}^{t_0} h_i^2 + \sum_{i=1}^\ell \left(\sum_{j=1}^{t_i} s_j^2\right) q_i + \sum_{i=1}^m \lambda_i p_i.\] 
@@ -21,7 +21,7 @@ for PSD matrices $C$, $D_1,\dots,D_\ell$. Next, we average this polynomial ident
 \end{align*}
 The LHS is at most $\poly(\|r\|, \|S\|)$, and the RHS is a sum of positive numbers, so the LHS is a bound on each term of the RHS. 
 %
-We would like to say that since $S$ is $\delta$-spectrally rich, the first term is at least $\delta Tr(C)$. 
+We would like to say that since $S$ is $\delta$-spectrally rich, the first term is at least $\delta \Tr(C)$. 
 %
 Unfortunately the averaged matrix may have zero eigenvectors, and it is possible that $C$ could have very large eigenvalues in these directions. 
 %
@@ -37,7 +37,7 @@ Now after averaging over $S$, the zero eigenspaces of $C'$ and each $D'_i$ are c
 \[\langle D_i', \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^Tq_i(\alpha)] \rangle \geq \epsilon\langle D_i', \E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]\rangle\]
 
 Taken with the $\delta$-spectral richness, we have
-\[\poly(\|r\|,\|S\|) \geq \delta Tr(C') + \sum_{i=1}^\ell \epsilon\delta Tr(D_i').\]
+\[\poly(\|r\|,\|S\|) \geq \delta \Tr(C') + \sum_{i=1}^\ell \epsilon\delta \Tr(D_i').\]
 The Frobenius norm of any PSD matrix is bounded by its trace, so we conclude that $C'$ and each $D_i'$ have entries bounded by $\poly(\|r\|, \|S\|, \frac{1}{\delta}, \frac{1}{\epsilon})$.
 
 The only thing left to do is to bound the coefficients $\lambda_i'$, but this is easy because the SoS proof is linear in these coefficients. If we imagine the coefficients of the $\lambda_i'$ as variables, then the linear system induced by the polynomial identity

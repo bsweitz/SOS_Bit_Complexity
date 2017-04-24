@@ -1,6 +1,6 @@
 \section{Preliminaries}
 \label{sec:prelims}
-For a set of real polynomials $\cP = \{p_1, p_2, \dots, p_m\}$, we denote their generated ideal in $\R[x]$ by $\langle \cP\rangle$ or $\langle p_1, \dots, p_m\rangle$. We will be working with systems of polynomial constraints, and we will use the $\cP$ to denote the equality constraints, and $\cQ$ to denote the inequality constraints, i.e. $p(x) = 0$ and $q(x) \geq 0$ for $p \in \cP$ and $q \in \cQ$. We will usually use $S$ for the set of points satisfying these constraints. We use $\R[x]_d$ for the set of polynomials of degree at most $d$, and $\psd{d}$ for the cone of positive semidefinite $d \times d$ matrices. We write ${\bf v}_d$ for the vector of polynomials whose entries are the elements of the usual monomial basis of $\R[x]_d$. Similarly, we use ${\bf v}(\alpha)_d$ for the vector of reals whose entries are the entries of ${\bf v}$ evaluated at $\alpha$. We usually omit the dependencies on $d$ as it is clear from context.
+For a set of real polynomials $\cP = \{p_1, p_2, \dots, p_m\}$, we denote their generated ideal in $\R[x]$ by $\langle \cP\rangle$ or $\langle p_1, \dots, p_m\rangle$. We will be working with systems of polynomial constraints, and we will use the $\cP$ to denote the equality constraints, and $\cQ$ to denote the inequality constraints, i.e. $p(x) = 0$ and $q(x) \geq 0$ for $p \in \cP$ and $q \in \cQ$. We will usually use $S$ for the set of points satisfying these constraints. We use $\R[x]_d$ for the set of polynomials of degree at most $d$, and $\psd{d}$ for the cone of positive semidefinite $d \times d$ matrices. We write ${\bf v}_d$ for the vector of polynomials whose entries are the elements of the usual monomial basis of $\R[x]_d$. Similarly, we use ${\bf v}(\alpha)_d$ for the vector of reals whose entries are the entries of ${\bf v}_d$ evaluated at $\alpha$. We usually omit the dependencies on $d$ as it is clear from context.
 %For an ideal $I$ of $\R[x]$, its real variety is defined 
 %\[\cV_\R(I) \coloneqq \{x \in \R | \forall p \in I: p(x) = 0\}.\]
 %For a set $S \subseteq \R$, its vanishing ideal is defined
@@ -34,16 +34,21 @@ The idea behind this terminology is that if such a proof exists, then $r$ must b
 In this section we define the conditions we require in order to guarantee that SoS proofs from $\cP$ and $\cQ$ have low bit-complexity.
 % seemed redundant, commented
 %Our goal is to develop easily checkable conditions that suffice to imply that SoS proofs may be taken to lie in a polynomially-bounded region. We will require the constraints to satisfy three properties. 
-For a set of assignments $S$ to a polynomial system $(\cP,\cQ)$, define the moment matrix as
-\[M_S \coloneqq E_{\alpha \in S}[{\bf v}(\alpha){\bf v}(\alpha)^T]\mcom\]
-where the expectation is over the uniform distribution over $S$.  We will omit the subscript and write $M$, if $S$ is clear from the context.
+For a polynomial system $(\cP, \cQ)$ and a set $S \subseteq \{x \mid \forall p \in \cP: p(x) = 0\}$, define the moment matrix as
+\[M_{S,d} \coloneqq E_{\alpha \in S}[{\bf v}(\alpha)_d{\bf v}(\alpha)_d^T]\mcom\]
+where the expectation is over the uniform distribution over $S$.  We will omit the subscripts and write $M$, if $S$ and $d$ are clear from the context.
 
 \begin{definition}\label{def:nice}
 With the above definitions, 
 \begin{itemize}
-\item We say that $S$ is \emph{$\delta$-spectrally rich for $(\cP, \cQ)$ up to degree $d$} if every nonzero eigenvalue of $M_S$ is at least $\delta$.
-\item We say that $(\cP, \cQ)$ is \emph{$k$-complete on $S$ up to degree $d$} if every zero eigenvector $c$ of $M_S$ (which can be seen as a degree $d$ polynomial $c^T{\bf v}$) has a degree $k$ derivation from $\cP$. 
+\item We say that $S$ is \emph{$\delta$-spectrally rich for $(\cP, \cQ)$ up to degree $d$} if every nonzero eigenvalue of $M_{S,d}$ is at least $\delta$.
+\item We say that $(\cP, \cQ)$ is \emph{$k$-complete on $S$ up to degree $d$} if every zero eigenvector $c$ of $M_{S,d}$ (which can be seen as a degree $d$ polynomial $c^T{\bf v}_d$) has a degree $k$ derivation from $\cP$. 
 \item We say that $S$ is \emph{$\epsilon$-robust for $\cQ$} if $\forall q \in \cQ, \forall \alpha \in S: q(\alpha) > \epsilon$.
 \end{itemize}
 \end{definition}
-Spectral richness of the solutions $S$ is equivalent to requiring if $p(x)$ is small on $S$, then there is a polynomial $q$ which agrees with $p$ on $S$ and that has small coefficients. If $(\cP, \cQ, S)$ satisfies all three conditions then we say that $S$ is $(\delta, k, \epsilon)$-\emph{rich} for $(\cP, \cQ)$ up to degree $d$. If $1/\delta = 2^{\poly(n^d)}$, $k = O(d)$, and $1/\epsilon = 2^{\poly(n^d)}$ we simply say $S$ is rich for $(\cP, \cQ)$ or simply rich. We choose these bounds because \prettyref{thm:main} will imply that any constraints with a rich solution space has proofs of non-negativity that can be taken to have polynomial bit complexity. Before we get into the proof of the main theorem, we exhibit polynomial systems that admit rich solutions.
+Spectral richness of the solutions $S$ is equivalent to requiring if $p(x)$ is small on $S$, then there is a polynomial $q$ which agrees with $p$ on $S$ and that has small coefficients. If $(\cP, \cQ, S)$ satisfies all three conditions then we say that $S$ is $(\delta, k, \epsilon)$-\emph{rich} for $(\cP, \cQ)$ up to degree $d$. If $1/\delta = 2^{\poly(n^d)}$, $k = O(d)$, and $1/\epsilon = 2^{\poly(n^d)}$ we simply say $S$ is rich for $(\cP, \cQ)$ or simply rich. We choose these bounds because \prettyref{thm:main} will imply that any constraints with a rich solution space has proofs of non-negativity that can be taken to have polynomial bit complexity. 
+\begin{remark}
+There is nothing special about the uniform distribution on $S$ for these definitions. In fact, our results hold if there is \emph{any} distribution over a set $S \subseteq \{x \mid \forall p \in \cP: p(x) = 0\}$ with the above properties. In this work we consider mostly combinatorial problems where $S$ is finite, and the uniform distribution is sufficient for all of our examples, so we restrict to this case for simplicity.
+\end{remark}
+
+Before we get into the proof of the main theorem, we exhibit polynomial systems that admit rich solutions.
